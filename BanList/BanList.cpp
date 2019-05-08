@@ -401,6 +401,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 }
 EVE_Request_AddFriend(__eventRequest_AddFriend)
 {
+	AddMsgToQueue("test", fromQQ);
 	if (BanedQQ.count(fromQQ)) {
 		AddMsgToQueue(getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被踢出或被禁言退出过群。", fromQQ);
 		return 1;

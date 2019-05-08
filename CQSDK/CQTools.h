@@ -22,6 +22,6 @@ std::string&msg_decode(std::string & s, bool isCQ = false);
 //获取cpu启动后经历的周期..
 inline unsigned __int64 GetCycleCount()
 {
-    __asm _emit 0x0F
-    __asm _emit 0x31
+	__asm _emit 0x0F
+	__asm _emit 0x31
 }

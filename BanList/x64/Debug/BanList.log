@@ -1,0 +1,46 @@
+﻿  CQAPI_EX.cpp
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+  CQEVE.cpp
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+c:\users\sitan\documents\github\banlist\cqsdkcpp\cqeve.cpp(19): warning C4312: “reinterpret_cast”: 从“int”转换到更大的“void *”
+  CQTools.cpp
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+c:\users\sitan\documents\github\banlist\cqsdkcpp\cqtools.cpp(65): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  debug.cpp
+c:\users\sitan\documents\github\banlist\cqsdkcpp\debug.cpp(25): error C2039: “Eip”: 不是“_CONTEXT”的成员
+  e:\windows kits\10\include\10.0.17134.0\um\winnt.h(3824): note: 参见“_CONTEXT”的声明
+c:\users\sitan\documents\github\banlist\cqsdkcpp\debug.cpp(27): error C2039: “Esp”: 不是“_CONTEXT”的成员
+  e:\windows kits\10\include\10.0.17134.0\um\winnt.h(3824): note: 参见“_CONTEXT”的声明
+c:\users\sitan\documents\github\banlist\cqsdkcpp\debug.cpp(29): error C2039: “Ebp”: 不是“_CONTEXT”的成员
+  e:\windows kits\10\include\10.0.17134.0\um\winnt.h(3824): note: 参见“_CONTEXT”的声明
+  BanList.cpp
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+  正在生成代码...

@@ -16,6 +16,7 @@
 #pragma once
 #ifndef __GLOBALVAR__
 #define __GLOBALVAR__
+
 #include "CQLogger.h"
 
 // 应用是否被启用

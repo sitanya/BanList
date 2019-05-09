@@ -1,4 +1,5 @@
 #pragma once
+
 #include "CQEVE.h"//不能删除此行...
 //#include "CQEVEMsg.h"
 //#include "CQTools.h"
@@ -18,41 +19,40 @@ font		字体
 名字如果使用下划线开头需要改成双下划线
 返回非零值,消息将被拦截,最高优先不可拦截
 */
-#define EVE_PrivateMsg_EX(Name)																	\
-	void Name(CQ::EVEPrivateMsg & eve);															\
-	EVE_PrivateMsg(Name)																		\
-	{																							\
-		CQ::EVEPrivateMsg tep(subType, msgId, fromQQ, msg, font); \
-		Name(tep); \
-		return tep._EVEret;																		\
-	}																							\
-	void Name(CQ::EVEPrivateMsg & eve)
+#define EVE_PrivateMsg_EX(Name)                                                                    \
+    void Name(CQ::EVEPrivateMsg & eve);                                                            \
+    EVE_PrivateMsg(Name)                                                                        \
+    {                                                                                            \
+        CQ::EVEPrivateMsg tep(subType, msgId, fromQQ, msg, font); \
+        Name(tep); \
+        return tep._EVEret;                                                                        \
+    }                                                                                            \
+    void Name(CQ::EVEPrivateMsg & eve)
 
 
-namespace CQ{
-    struct EVEPrivateMsg :public EVEMsg
-    {
+namespace CQ {
+    struct EVEPrivateMsg : public EVEMsg {
 
-		EVEPrivateMsg(int subType, int msgId, long long fromQQ, const char* msg, int Font);
+        EVEPrivateMsg(int subType, int msgId, long long fromQQ, const char *msg, int Font);
 
         //来自好友
-		bool fromPrivate() const;
+        bool fromPrivate() const;
 
         //来自在线状态
-		bool fromOnlineStatus() const;
+        bool fromOnlineStatus() const;
 
         //来自群临时
-		bool fromGroup() const;
+        bool fromGroup() const;
 
         //来自讨论组临时
-		bool fromDiscuss() const;
+        bool fromDiscuss() const;
 
-		// 通过 EVEMsg 继承
-		virtual msg sendMsg() const override;
+        // 通过 EVEMsg 继承
+        virtual msg sendMsg() const override;
 
-		virtual int sendMsg(const char *) const override;
+        virtual int sendMsg(const char *) const override;
 
-		virtual int sendMsg(std::string) const override;
+        virtual int sendMsg(std::string) const override;
 
-	};
+    };
 }

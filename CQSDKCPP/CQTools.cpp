@@ -1,4 +1,4 @@
-#include "CQTools.h"  
+#include "CQTools.h"
 
 #include <string>
 
@@ -8,15 +8,15 @@ using namespace std;
 
 //代码来源于网络
 static const string base64_chars =
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-"abcdefghijklmnopqrstuvwxyz"
-"0123456789+/";
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz"
+        "0123456789+/";
 
 static bool is_base64(unsigned char c) {
     return (isalnum(c) || (c == '+') || (c == '/'));
 }
 
-string base64_encode(string const& decode_string) {
+string base64_encode(string const &decode_string) {
     auto in_len = decode_string.size();
     auto bytes_to_encode = decode_string.data();
     string ret;
@@ -33,14 +33,13 @@ string base64_encode(string const& decode_string) {
             char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
             char_array_4[3] = char_array_3[2] & 0x3f;
 
-            for (i = 0; (i <4); i++)
+            for (i = 0; (i < 4); i++)
                 ret += base64_chars[char_array_4[i]];
             i = 0;
         }
     }
 
-    if (i)
-    {
+    if (i) {
         for (j = i; j < 3; j++)
             char_array_3[j] = '\0';
 
@@ -61,7 +60,7 @@ string base64_encode(string const& decode_string) {
 
 }
 
-string base64_decode(string const& encoded_string) {
+string base64_decode(string const &encoded_string) {
     int in_len = encoded_string.size();
     int i = 0;
     int j = 0;
@@ -70,9 +69,10 @@ string base64_decode(string const& encoded_string) {
     string ret;
 
     while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_])) {
-        char_array_4[i++] = encoded_string[in_]; in_++;
+        char_array_4[i++] = encoded_string[in_];
+        in_++;
         if (i == 4) {
-            for (i = 0; i <4; i++)
+            for (i = 0; i < 4; i++)
                 char_array_4[i] = static_cast<unsigned char> (base64_chars.find(char_array_4[i]));
 
             char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
@@ -86,10 +86,10 @@ string base64_decode(string const& encoded_string) {
     }
 
     if (i) {
-        for (j = i; j <4; j++)
+        for (j = i; j < 4; j++)
             char_array_4[j] = 0;
 
-        for (j = 0; j <4; j++)
+        for (j = 0; j < 4; j++)
             char_array_4[j] = static_cast<unsigned char> (base64_chars.find(char_array_4[j]));
 
         char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
@@ -102,34 +102,32 @@ string base64_decode(string const& encoded_string) {
     return ret;
 }
 
-std::string&msg_tihuan(std::string  & s, std::string const old, std::string const n)
-{
-	size_t st = 0; 
-	while ((st = s.find(old, st)) < s.size()) {
-		s.replace(st, old.size(), n); st += n.size();
-	}
-	return s;
+std::string &msg_tihuan(std::string &s, std::string const old, std::string const n) {
+    size_t st = 0;
+    while ((st = s.find(old, st)) < s.size()) {
+        s.replace(st, old.size(), n);
+        st += n.size();
+    }
+    return s;
 }
 
-std::string & msg_encode(std::string & s, bool isCQ)
-{
-	msg_tihuan(s, "&", "&amp;");
-	msg_tihuan(s, "[", "&#91;");
-	msg_tihuan(s, "]", "&#93;");
-	msg_tihuan(s, "\t", "&#44;");
-	if(isCQ)
-	msg_tihuan(s, ",", "&#44;");
-	return s;
+std::string &msg_encode(std::string &s, bool isCQ) {
+    msg_tihuan(s, "&", "&amp;");
+    msg_tihuan(s, "[", "&#91;");
+    msg_tihuan(s, "]", "&#93;");
+    msg_tihuan(s, "\t", "&#44;");
+    if (isCQ)
+        msg_tihuan(s, ",", "&#44;");
+    return s;
 }
 
-std::string&msg_decode(std::string  & s, bool isCQ)
-{
-	if (isCQ)
-	msg_tihuan(s, "&#44;", ",");
-	msg_tihuan(s, "&#91;", "[");
-	msg_tihuan(s, "&#93;", "]");
-	msg_tihuan(s, "&#44;", "\t");
-	msg_tihuan(s, "&amp;", "&");
-	return s;
+std::string &msg_decode(std::string &s, bool isCQ) {
+    if (isCQ)
+        msg_tihuan(s, "&#44;", ",");
+    msg_tihuan(s, "&#91;", "[");
+    msg_tihuan(s, "&#93;", "]");
+    msg_tihuan(s, "&#44;", "\t");
+    msg_tihuan(s, "&amp;", "&");
+    return s;
 }
 

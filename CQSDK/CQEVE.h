@@ -6,7 +6,7 @@ Written by MukiPy2001 & Thanks for the help of orzFly and Coxxs
 #pragma once
 
 #define CQEVENT(ReturnType, Name, Size) __pragma(comment(linker, "/EXPORT:" #Name "=_" #Name "@" #Size))\
-	extern "C" __declspec(dllexport) ReturnType __stdcall Name
+    extern "C" __declspec(dllexport) ReturnType __stdcall Name
 
 /*
 返回应用的ApiVer、Appid，打包后将不会调用

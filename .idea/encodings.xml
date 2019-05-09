@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/BanList/BanList.vcxproj.filters" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BanList/BanList.vcxproj.user" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Banlist.sln" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/CQSDK/CQEVEBasic.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/CQSDK/Unpack.h" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/CQSDKCPP/Unpack.cpp" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

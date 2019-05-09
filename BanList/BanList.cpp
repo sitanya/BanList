@@ -147,6 +147,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
                 transform(strLowerMessage.begin(), strLowerMessage.end(), strLowerMessage.begin(), tolower);
                 if (BanedQQ.count(eve.fromQQ) && eve.fromQQ != MASTER)
                 {
+					AddMsgToQueue("您的私聊信息已被拦截，因为您处于黑名单中", eve.fromQQ);
                     eve.message_block();
                     return;
                 }
@@ -374,19 +375,18 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
         }
 EVE_Request_AddFriend(__eventRequest_AddFriend)
         {
-                AddMsgToQueue("test", fromQQ);
         if (BanedQQ.count(fromQQ)) {
             AddMsgToQueue(
-                    getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被踢出或被禁言退出过群。",
+                    "您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。",
                     fromQQ);
+			setFriendAddRequest(responseFlag, 2, "");
             return 1;
         }
         setFriendAddRequest(responseFlag, 1, "");
-        return 1;
+        return 0;
         }
 EVE_Request_AddGroup(__eventRequest_AddGroup)
         {
-                AddMsgToQueue("test", MASTER);
         setGroupAddRequest(responseFlag, 2, 2, "");
         if (subType == 2) {
             string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：(" +

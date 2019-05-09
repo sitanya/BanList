@@ -2,22 +2,18 @@
 #include "CQEVE.h"
 
 int AuthCode;
-
-CQEVENT(int, Initialize,
-
-4)(
-int AuthCode
-)
+CQEVENT(int, Initialize, 4)(const int AuthCode)
 {
-::AuthCode =
-AuthCode;
-return 0;
+	::AuthCode = AuthCode;
+	return 0;
 }
 
-int getAuthCode() {
-    return AuthCode;
+int getAuthCode()
+{
+	return AuthCode;
 }
 
-int CQ::getAuthCode() {
-    return AuthCode;
+int CQ::getAuthCode()
+{
+	return AuthCode;
 }

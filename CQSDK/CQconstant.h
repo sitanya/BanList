@@ -34,4 +34,4 @@
 #define RequestRefused 2
 
 #define RequestGroupAdd 1
-#define RequestGroupInvite 2 
+#define RequestGroupInvite 2

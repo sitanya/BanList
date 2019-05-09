@@ -1,6 +1,4 @@
 #pragma once
-
-#include "CQEVE.h"//不能删除此行...
 #include "CQEVEBasic.h"
 
 /*
@@ -15,18 +13,18 @@ fromQQ 来源QQ
 返回非零值,消息将被拦截,最高优先不可拦截
 */
 #define EVE_Friend_Add_EX(Name) \
-    void Name(CQ::EVERequestAddFriend & eve);\
-    EVE_Friend_Add(Name)\
-    {\
-        CQ::EVEFriendAdd tep(subType, msgId, fromGroup, fromQQ, msg, responseFlag);\
-        Name(tep);\
-        return tep._EVEret;\
-    }\
-    void Name(CQ::EVEFriendAdd & eve)\
+	void Name(CQ::EVERequestAddFriend & eve);\
+	EVE_Friend_Add(Name)\
+	{\
+		CQ::EVEFriendAdd tep(subType, msgId, fromGroup, fromQQ, msg, responseFlag);\
+		Name(tep);\
+		return tep._EVEret;\
+	}\
+	void Name(CQ::EVEFriendAdd & eve)
 
-namespace CQ {
-    struct EVEFriendAdd : public EVE {
-
-    };
+namespace CQ
+{
+	struct EVEFriendAdd final : EVE
+	{
+	};
 }
-

@@ -24,6 +24,8 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
+#include "mysql.h"
+#include "MysqlClient.h"
 
 #include "APPINFO.h"
 #include "CQEVE_ALL.h"
@@ -318,6 +320,21 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
                     eve.message_block();
                     return;
                 }
+				else if (strLowerMessage.substr(intMsgCnt, 5) == "mysql")
+				{
+				intMsgCnt += 5;
+				string tmp;
+				list<string> a = QueryBlack();
+				//typedef std::list<string> list_t;
+				//list_t::iterator iter;
+				//for (iter = a.begin(); iter != a.end(); iter++)
+				//{
+				//	AddMsgToQueue(*iter, MASTER);
+				//}
+				
+				eve.message_block();
+				return;
+				}
                 return;
         }
 EVE_GroupMsg_EX(__eventGroupMsg)

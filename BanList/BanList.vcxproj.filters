@@ -1,137 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Դ�ļ�">
+    <Filter Include="源文件">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="ͷ�ļ�">
+    <Filter Include="头文件">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="��Դ�ļ�">
+    <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ͷ�ļ�\CQHead">
+    <Filter Include="头文件\CQHead">
       <UniqueIdentifier>{264cbd68-17fb-46f0-95a7-e30bd02878ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Դ�ļ�\CQCPP">
+    <Filter Include="源文件\CQCPP">
       <UniqueIdentifier>{9991a6c1-3689-4b27-a14b-c09c80989141}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
-      <Filter>Դ�ļ�</Filter>
+      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\CQAPI.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\CQAPI_EX.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\CQEVE.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\CQstream.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\CQTools.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\debug.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="..\CQSDKCPP\Unpack.cpp">
-      <Filter>Դ�ļ�\CQCPP</Filter>
+      <Filter>源文件\CQCPP</Filter>
     </ClCompile>
     <ClCompile Include="DiceMsgSend.cpp">
-      <Filter>Դ�ļ�</Filter>
+      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GlobalVar.cpp">
-      <Filter>Դ�ļ�</Filter>
+      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BanList.cpp">
-      <Filter>Դ�ļ�</Filter>
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APPINFO.h">
-      <Filter>ͷ�ļ�</Filter>
+      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\bufstream.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQAPI.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQAPI_EX.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQconstant.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\cqdefine.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_ALL.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_DiscussMsg.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_FriendAdd.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_GroupMsg.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_PrivateMsg.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_RequestAddFriend.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_RequestAddGroup.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVE_Status.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVEBasic.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVEMsg.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQEVERequest.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQLogger.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQMsgSend.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\CQTools.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="..\CQSDK\Unpack.h">
-      <Filter>ͷ�ļ�\CQHead</Filter>
+      <Filter>头文件\CQHead</Filter>
     </ClInclude>
     <ClInclude Include="DiceMsgSend.h">
-      <Filter>ͷ�ļ�</Filter>
+      <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GlobalVar.h">
-      <Filter>ͷ�ļ�</Filter>
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="CQP.lib">
-      <Filter>��Դ�ļ�</Filter>
+      <Filter>资源文件</Filter>
     </Library>
   </ItemGroup>
 </Project>

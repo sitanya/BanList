@@ -1,10 +1,10 @@
-ï»¿#include "..\CQSDK\Unpack.h"
+#include "..\CQSDK\Unpack.h"
 
 #include <iostream>
 #include <string>
 
 using namespace std;
-//æ‰“å°å†…å­˜æ•°æ®
+//´òÓ¡ÄÚ´æÊı¾İ
 void show(void*t, int len)
 {
 	auto p = static_cast<unsigned char*>(t);
@@ -16,7 +16,7 @@ void show(void*t, int len)
 	}
 	cout << "}" << endl;
 }
-//å†…å­˜ç¿»è½¬
+//ÄÚ´æ·­×ª
 unsigned char* Flip(unsigned char*str, int len)
 {
 	int f = 0; --len; unsigned char p;
@@ -29,8 +29,8 @@ unsigned char* Flip(unsigned char*str, int len)
 	}
 	return str;
 }
-//åˆ°å­—èŠ‚é›†...
-//åœ¨åŸæœ‰çš„æ•°æ®åŸºç¡€ä¸Šæ“ä½œ
+//µ½×Ö½Ú¼¯...
+//ÔÚÔ­ÓĞµÄÊı¾İ»ù´¡ÉÏ²Ù×÷
 template<typename ClassType>
 unsigned char * toBin(ClassType & i)
 {
@@ -148,12 +148,12 @@ std::vector<unsigned char> Unpack::getchars()
 
 Unpack& Unpack::add(string i)
 {
-	if (i.size() <= 0)//å­—ç¬¦ä¸²é•¿åº¦ä¸º0,ç›´æ¥æ”¾å…¥é•¿åº¦0
+	if (i.size() <= 0)//×Ö·û´®³¤¶ÈÎª0,Ö±½Ó·ÅÈë³¤¶È0
 	{
 		add(static_cast<short>(0));
 		return *this;
 	}
-	if (i.size() > 32767)//å­—ç¬¦ä¸²é•¿åº¦è¶…å‡ºé™åˆ¶,
+	if (i.size() > 32767)//×Ö·û´®³¤¶È³¬³öÏŞÖÆ,
 	{
 		i = i.substr(0, 32767);
 	}

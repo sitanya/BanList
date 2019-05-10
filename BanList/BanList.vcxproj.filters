@@ -39,9 +39,6 @@
     <ClCompile Include="..\CQSDKCPP\CQTools.cpp">
       <Filter>源文件\CQCPP</Filter>
     </ClCompile>
-    <ClCompile Include="..\CQSDKCPP\debug.cpp">
-      <Filter>源文件\CQCPP</Filter>
-    </ClCompile>
     <ClCompile Include="..\CQSDKCPP\Unpack.cpp">
       <Filter>源文件\CQCPP</Filter>
     </ClCompile>
@@ -52,6 +49,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BanList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MysqlClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -126,6 +126,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GlobalVar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MysqlClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,0 +1,77 @@
+﻿  CQAPI.cpp
+  CQAPI_EX.cpp
+  CQEVE.cpp
+  CQstream.cpp
+  CQTools.cpp
+  Unpack.cpp
+  BanList.cpp
+  DiceMsgSend.cpp
+  dllmain.cpp
+  GlobalVar.cpp
+  MysqlClient.cpp
+c:\users\sitan\documents\github\banlist\cqsdkcpp\cqtools.cpp(67): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(56): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(66): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(77): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\cqsdkcpp\cqeve.cpp(22): warning C4312: “reinterpret_cast”: 从“const int”转换到更大的“const void *”
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(70): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(88): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(103): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+CQAPI.obj : warning LNK4197: 多次指定导出“Initialize”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“AppInfo”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventExit”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventDisable”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventRequest_AddGroup”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventRequest_AddFriend”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventSystem_GroupMemberIncrease”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventSystem_GroupMemberDecrease”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventDiscussMsg”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventGroupMsg”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventPrivateMsg”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventEnable”；使用第一个规范
+    正在创建库 C:\Users\sitan\Documents\GitHub\BanList\x64\Release\app.lib 和对象 C:\Users\sitan\Documents\GitHub\BanList\x64\Release\app.exp
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setDiscussLeave
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupSpecialTitle
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getCookies
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getRecord
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupAdmin
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_sendPrivateMsg
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupAnonymousBan
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getCsrfToken
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_sendDiscussMsg
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupBan
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getAppDirectory
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getGroupMemberList
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_sendGroupMsg
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupAnonymous
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_sendLikeV2
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getLoginNick
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getLoginQQ
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getGroupMemberInfoV2
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setFriendAddRequest
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_deleteMsg
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getStrangerInfo
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupAddRequestV2
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupLeave
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupWholeBan
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_getGroupList
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setFatal
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupCard
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_setGroupKick
+CQAPI_EX.obj : error LNK2001: 无法解析的外部符号 __imp_CQ_addLog
+app.exp : error LNK2001: 无法解析的外部符号 _AppInfo@0
+app.exp : error LNK2001: 无法解析的外部符号 _Initialize@4
+app.exp : error LNK2001: 无法解析的外部符号 ___eventDisable@0
+app.exp : error LNK2001: 无法解析的外部符号 ___eventDiscussMsg@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventEnable@0
+app.exp : error LNK2001: 无法解析的外部符号 ___eventExit@0
+app.exp : error LNK2001: 无法解析的外部符号 ___eventGroupMsg@36
+app.exp : error LNK2001: 无法解析的外部符号 ___eventPrivateMsg@24
+app.exp : error LNK2001: 无法解析的外部符号 ___eventRequest_AddFriend@24
+app.exp : error LNK2001: 无法解析的外部符号 ___eventRequest_AddGroup@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventSystem_GroupMemberDecrease@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventSystem_GroupMemberIncrease@32
+C:\Users\sitan\Documents\GitHub\BanList\x64\Release\app.dll : fatal error LNK1120: 41 个无法解析的外部命令

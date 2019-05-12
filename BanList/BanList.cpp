@@ -234,7 +234,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 			return;
 		}
 		for (auto i : strqqnum) {
-			if (!isdigit(i) && i !=',') {
+			if (!isdigit(i) && i != ',') {
 				return;
 			}
 		}
@@ -302,17 +302,17 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 			}
 		}
 		set<long long> BanedQQList;
-		
+
 		BanedQQList = QueryBlack(false);
-		
+
 		if (!BanedQQList.count(stoll(strqqnum))) {
 			AddMsgToQueue(strqqnum + "并不在黑名单中！", eve.fromQQ);
 			eve.message_block();
 			return;
 		}
-		
-		DeleteBlack(stoll(strqqnum),false);
-			
+
+		DeleteBlack(stoll(strqqnum), false);
+
 		AddMsgToQueue(" 您已被移出封禁名单！", stoll(strqqnum));
 		AddMsgToQueue("已将" + strqqnum + "移出封禁名单！", eve.fromQQ);
 		eve.message_block();
@@ -345,9 +345,9 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 			eve.message_block();
 			return;
 		}
-		
+
 		DeleteBlack(stoll(strqqGroupNum), true);
-		
+
 		AddMsgToQueue("此群已被移出封禁名单！", stoll(strqqGroupNum), false);
 		AddMsgToQueue("已将" + strqqGroupNum + "移出封禁名单！", eve.fromQQ);
 		eve.message_block();
@@ -361,7 +361,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		string banedQQList = "";
 		set<long long> BanedQQList;
 		set<long long> BanedGroupList;
-		
+
 		BanedQQList = QueryBlack(false);
 		set<long long>::iterator iter = BanedQQList.begin();
 		while (iter != BanedQQList.end())
@@ -381,7 +381,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 			iter_G++;
 		}
 		AddMsgToQueue(banGroupList + banedGroupList, MASTER);
-		
+
 		eve.message_block();
 		return;
 	}
@@ -393,9 +393,9 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 EVE_GroupMsg_EX(__eventGroupMsg)
 {
 	set<long long> BanedQQList;
-	
+
 	BanedQQList = QueryBlack(false);
-	
+
 	if (BanedQQList.count(eve.fromQQ)) {
 		eve.message_ignore();
 		eve.message_block();
@@ -406,12 +406,12 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 			eve.message.find(to_string(getLoginQQ())) != string::npos) {
 			string strMsg = "在群\"" + getGroupList()[eve.fromGroup] + "\"(" + to_string(eve.fromGroup) +
 				")中被禁言,已将群拉黑并自动退出。";
-			
+
 			InsertBlack(eve.fromGroup, true);
-			
+
 			setGroupLeave(eve.fromGroup);
 			AddMsgToQueue(strMsg, MASTER);
-			AddMsgToQueue(strMsg, MasterGroup);
+			AddMsgToQueue(strMsg, MasterGroup, false);
 		}
 		return;
 	}
@@ -421,9 +421,9 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 EVE_DiscussMsg_EX(__eventDiscussMsg)
 {
 	set<long long> BanedQQList;
-	
+
 	BanedQQList = QueryBlack(false);
-	
+
 	if (eve.isSystem())return;
 	else if (BanedQQList.count(eve.fromQQ) && eve.fromQQ != MASTER)
 	{
@@ -436,13 +436,13 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 {
 	if (beingOperateQQ == getLoginQQ())
 	{
-		
+
 		InsertBlack(fromQQ, false);
 		InsertBlack(fromGroup, true);
-		
+
 		AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
 		AddMsgToQueue("已将" + to_string(fromQQ) + "列入封禁名单！" + "原因：被踢出群" + to_string(fromGroup), MASTER);
-		AddMsgToQueue("已将" + to_string(fromQQ) + "列入封禁名单！" + "原因：被踢出群" + to_string(fromGroup), MasterGroup);
+		AddMsgToQueue("已将" + to_string(fromQQ) + "列入封禁名单！" + "原因：被踢出群" + to_string(fromGroup), MasterGroup, false);
 		return 1;
 	}
 	return 0;
@@ -451,6 +451,9 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 {
 	if (beingOperateQQ == getLoginQQ())
 	{
+		if (getGroupList().size() < 20) {
+			AddMsgToQueue("收到" + to_string(fromGroup) + "的群邀请，因群小于20人QQ无审核通知，已自动同意", MasterGroup, false);
+		}
 		AddMsgToQueue("各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分", fromGroup, false);
 	}
 	return 1;
@@ -458,7 +461,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 EVE_Request_AddFriend(__eventRequest_AddFriend)
 {
 	set<long long> BanedQQList;
-	
+
 	BanedQQList = QueryBlack(false);
 	if (BanedQQList.count(fromQQ)) {
 		AddMsgToQueue(
@@ -468,20 +471,22 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			"收到黑名单内:" + to_string(fromQQ) + "的好友请求，已自动拒绝",
 			MASTER);
 		AddMsgToQueue("收到黑名单内:" + to_string(fromQQ) + "的好友请求，已自动拒绝",
-			MasterGroup);
+			MasterGroup, false);
 		setFriendAddRequest(responseFlag, 2, "您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。");
 		return 1;
 	}
+	AddMsgToQueue("收到" + to_string(fromQQ) + "的好友请求，已自动同意", MasterGroup, false);
 	setFriendAddRequest(responseFlag, 1, "各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分");
 	return 1;
 }
 EVE_Request_AddGroup(__eventRequest_AddGroup)
 {
+	setGroupAddRequest(responseFlag, 2, 1, "");
 	if (subType == 2) {
 		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：(" +
 			to_string(fromGroup) + ")。";
 		set<long long> BanedGroup;
-		
+
 		BanedGroup = QueryBlack(true);
 		set<long long> BanedQQList;
 		BanedQQList = QueryBlack(false);
@@ -498,9 +503,7 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 			strMsg += "已同意";
 			setGroupAddRequest(responseFlag, 2, 1, "");
 		}
-		AddMsgToQueue(strMsg, MASTER);
-		AddMsgToQueue(strMsg, MasterGroup);
-		AddMsgToQueue(strMsg, fromQQ);
+		AddMsgToQueue(strMsg, MasterGroup, false);
 		return 1;
 	}
 	return 0;

@@ -74,6 +74,44 @@ inline void init2(string &msg) {
 		msg[0] = '.';
 }
 
+vector<string> split(string &str, const char *c)
+{
+	char *cstr, *p;
+	vector<string> res;
+	cstr = new char[str.size() + 1];
+	strcpy(cstr, str.c_str());
+	p = strtok(cstr, c);
+	while (p != NULL)
+	{
+		res.push_back(p);
+		p = strtok(NULL, c);
+	}
+	return res;
+}
+
+vector<string> split(const string &str, const string &delim)
+{
+	vector<string> res;
+	if ("" == str)
+		return res;
+	//先将要切割的字符串从string类型转换为char*类型
+	char *strs = new char[str.length() + 1]; //不要忘了
+	strcpy(strs, str.c_str());
+
+	char *d = new char[delim.length() + 1];
+	strcpy(d, delim.c_str());
+
+	char *p = strtok(strs, d);
+	while (p)
+	{
+		string s = p;	 //分割得到的字符串转换为string类型
+		res.push_back(s); //存入结果数组
+		p = strtok(NULL, d);
+	}
+
+	return res;
+}
+
 
 std::string strip(std::string origin) {
 	bool flag = true;
@@ -187,7 +225,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		while (isspace(strLowerMessage[intMsgCnt]))
 			intMsgCnt++;
 		string strqqnum = "";
-		while (isdigit(strLowerMessage[intMsgCnt])) {
+		while (strLowerMessage[intMsgCnt]) {
 			strqqnum += strLowerMessage[intMsgCnt];
 			intMsgCnt++;
 		}
@@ -196,14 +234,17 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 			return;
 		}
 		for (auto i : strqqnum) {
-			if (!isdigit(i)) {
+			if (!isdigit(i) && i !=',') {
 				return;
 			}
 		}
-		
-		InsertBlack(stoll(strqqnum), false);
-		AddMsgToQueue("您因违规操作已被列入封禁名单！", stoll(strqqnum));
-		AddMsgToQueue("已将" + strqqnum + "列入封禁名单！", eve.fromQQ);
+		vector<string> qqList = split(strqqnum, ",");
+		for (int i = 0; i < qqList.size(); i++)
+		{
+			InsertBlack(stoll(qqList[i]), false);
+			AddMsgToQueue("您因违规操作已被列入封禁名单！", stoll(qqList[i]));
+			AddMsgToQueue("已将" + qqList[i] + "列入封禁名单！", eve.fromQQ);
+		}
 		eve.message_block();
 		return;
 	}
@@ -214,7 +255,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		while (isspace(strLowerMessage[intMsgCnt]))
 			intMsgCnt++;
 		string strGroupnum = "";
-		while (isdigit(strLowerMessage[intMsgCnt])) {
+		while (strLowerMessage[intMsgCnt]) {
 			strGroupnum += strLowerMessage[intMsgCnt];
 			intMsgCnt++;
 		}
@@ -223,13 +264,18 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 			return;
 		}
 		for (auto i : strGroupnum) {
-			if (!isdigit(i)) {
+			if (!isdigit(i) && i != ',') {
 				return;
 			}
 		}
-		InsertBlack(stoll(strGroupnum), true);
-		AddMsgToQueue("群" + strGroupnum + "已被列入封禁名单！", stoll(strGroupnum));
-		AddMsgToQueue("已将此群" + strGroupnum + "列入封禁名单！", eve.fromQQ);
+
+		vector<string> qqGroupList = split(strGroupnum, ",");
+		for (int i = 0; i < qqGroupList.size(); i++)
+		{
+			InsertBlack(stoll(qqGroupList[i]), true);
+			AddMsgToQueue("群" + qqGroupList[i] + "已被列入封禁名单！", stoll(qqGroupList[i]));
+			AddMsgToQueue("已将此群" + qqGroupList[i] + "列入封禁名单！", eve.fromQQ);
+		}
 		eve.message_block();
 		return;
 	}
@@ -405,7 +451,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 {
 	if (beingOperateQQ == getLoginQQ())
 	{
-		AddMsgToQueue("入群信息", fromGroup, false);
+		AddMsgToQueue("各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分", fromGroup, false);
 	}
 	return 1;
 }
@@ -426,7 +472,7 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 		setFriendAddRequest(responseFlag, 2, "您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。");
 		return 1;
 	}
-	setFriendAddRequest(responseFlag, 1, "");
+	setFriendAddRequest(responseFlag, 1, "各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分");
 	return 1;
 }
 EVE_Request_AddGroup(__eventRequest_AddGroup)

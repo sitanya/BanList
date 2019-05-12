@@ -18,15 +18,15 @@
 #define __MYSQlVAR__
 
 #include <string>
-#include <list>
+#include <set>
 
 using namespace std;
 
 bool ConnectDatabase();
 void FreeConnect();
-std::list<std::string> QueryBlack();
-bool InsertData();
+set<long long> QueryBlack(bool);
+bool InsertBlack(long long,bool);
 bool ModifyData();
-bool DeleteData();
+bool DeleteBlack(long long,bool);
 
 #endif /*__MYSQlVAR__*/

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -111,7 +111,7 @@
       <ConformanceMode>true</ConformanceMode>
       <ExceptionHandling>Sync</ExceptionHandling>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
@@ -211,6 +211,10 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="GlobalVar.cpp" />
     <ClCompile Include="MysqlClient.cpp" />
+    <ClCompile Include="NameGenerator.cpp" />
+    <ClCompile Include="NameStorage.cpp" />
+    <ClCompile Include="StorageBase.cpp" />
+    <ClCompile Include="RandomGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CQSDK\bufstream.h" />
@@ -238,6 +242,10 @@
     <ClInclude Include="DiceMsgSend.h" />
     <ClInclude Include="GlobalVar.h" />
     <ClInclude Include="MysqlClient.h" />
+    <ClInclude Include="NameGenerator.h" />
+    <ClInclude Include="NameStorage.h" />
+    <ClInclude Include="StorageBase.h" />
+    <ClInclude Include="RandomGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="CQP.lib" />

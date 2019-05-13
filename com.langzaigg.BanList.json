@@ -132,7 +132,10 @@
     //置讨论组退出		setDiscussLeave
     150,
     //置好友添加请求		setFriendAddRequest
-    151
+    151,
     //置群添加请求		setGroupAddRequest
+    160,
+    //取群成员列表	getGroupMemberList
+    161 //取群列表		getGroupList
   ]
 }

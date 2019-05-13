@@ -12,6 +12,9 @@ Written by MukiPy2001 & Thanks for the help of orzFly and Coxxs
 #define CQAPI(NAME,ReturnType) extern "C" __attribute__((dllimport)) ReturnType __attribute__((__stdcall__)) NAME  // NOLINT
 #endif /*_MSC_VER*/
 
+#define CQEVENT(ReturnType, Name, Size) __pragma(comment(linker, "/EXPORT:" #Name "=_" #Name "@" #Size))\
+ extern "C" __declspec(dllexport) ReturnType __stdcall Name
+
 
 namespace CQ
 {

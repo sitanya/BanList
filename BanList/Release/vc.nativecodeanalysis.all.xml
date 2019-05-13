@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\sitan\documents\github\banlist\cqsdk</FILEPATH>
+      <FILENAME>cqeve_requestaddfriend.h</FILENAME>
+      <LINE>39</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION></FUNCTION>
+    <DECORATED></DECORATED>
+    <FUNCLINE>0</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\sitan\documents\github\banlist\cqsdk</FILEPATH>
+      <FILENAME>cqeve_requestaddfriend.h</FILENAME>
+      <LINE>40</LINE>
+      <COLUMN>79</COLUMN>
+    </SFA>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION></FUNCTION>
+    <DECORATED></DECORATED>
+    <FUNCLINE>0</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\sitan\documents\github\banlist\cqsdk</FILEPATH>
+      <FILENAME>cqeve_requestaddgroup.h</FILENAME>
+      <LINE>45</LINE>
+      <COLUMN>39</COLUMN>
+    </SFA>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION></FUNCTION>
+    <DECORATED></DECORATED>
+    <FUNCLINE>0</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\sitan\documents\github\banlist\cqsdk</FILEPATH>
+      <FILENAME>cqeve_requestaddgroup.h</FILENAME>
+      <LINE>46</LINE>
+      <COLUMN>79</COLUMN>
+    </SFA>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION></FUNCTION>
+    <DECORATED></DECORATED>
+    <FUNCLINE>0</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\sitan\documents\github\banlist\banlist</FILEPATH>
+      <FILENAME>mysqlclient.cpp</FILENAME>
+      <LINE>52</LINE>
+      <COLUMN>33</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>my_atoll</FUNCTION>
+    <DECORATED>?my_atoll@@YA_JPAD@Z</DECORATED>
+    <FUNCLINE>45</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\sitan\documents\github\banlist\banlist</FILEPATH>
+      <FILENAME>namegenerator.cpp</FILENAME>
+      <LINE>30</LINE>
+      <COLUMN>48</COLUMN>
+    </SFA>
+    <DEFECTCODE>6262</DEFECTCODE>
+    <DESCRIPTION>函数使用了堆栈的“150240”个字节: 超过了 /analyze:stacksize '16384'。。此分配针对的是编译器为“class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [6260]”(第 30 行)生成的临时项。 请考虑将某些数据移到堆中。</DESCRIPTION>
+    <FUNCTION></FUNCTION>
+    <DECORATED></DECORATED>
+    <FUNCLINE>0</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>

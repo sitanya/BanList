@@ -108,6 +108,10 @@
     }
   ],
   "menu": [
+    {
+      "name": "²âÊÔ´°¿Ú",
+      "function": "_eventTestSwitch"
+    }
   ],
   "status": [
     // Ðü¸¡´°×´Ì¬£¨¼û com.example.status ÑùÀý£©

@@ -159,12 +159,14 @@
       <PreprocessorDefinitions>_DEBUG;DICE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <AdditionalIncludeDirectories>..\CQSDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\mysql-5.7.19-win32/include;F:\mysql-5.7.19-win32\lib;..\CQSDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>F:\mysql-5.7.19-win32/include;F:\mysql-5.7.19-win32\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -215,6 +217,8 @@
     <ClCompile Include="NameStorage.cpp" />
     <ClCompile Include="StorageBase.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="winmain.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\CQSDK\bufstream.h" />
@@ -246,7 +250,10 @@
     <ClInclude Include="NameStorage.h" />
     <ClInclude Include="StorageBase.h" />
     <ClInclude Include="RandomGenerator.h" />
-  </ItemGroup>
+    <ClInclude Include="winmain.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    </ItemGroup>
   <ItemGroup>
     <Library Include="CQP.lib" />
   </ItemGroup>

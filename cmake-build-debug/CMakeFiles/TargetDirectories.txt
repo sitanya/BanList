@@ -1,0 +1,3 @@
+/Users/zhangxiaozhou/Documents/BanList/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/zhangxiaozhou/Documents/BanList/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/zhangxiaozhou/Documents/BanList/cmake-build-debug/CMakeFiles/BanList.dir

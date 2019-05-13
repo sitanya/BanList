@@ -1,46 +1,71 @@
-﻿  CQAPI_EX.cpp
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+﻿E:\VirsualStudio\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(com.langzaigg.BanList.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  CQAPI.cpp
+  CQAPI_EX.cpp
   CQEVE.cpp
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
-c:\users\sitan\documents\github\banlist\cqsdkcpp\cqeve.cpp(19): warning C4312: “reinterpret_cast”: 从“int”转换到更大的“void *”
+c:\users\sitan\documents\github\banlist\cqsdkcpp\cqeve.cpp(22): warning C4312: “reinterpret_cast”: 从“const int”转换到更大的“const void *”
+  CQstream.cpp
   CQTools.cpp
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
-c:\users\sitan\documents\github\banlist\cqsdkcpp\cqtools.cpp(65): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  debug.cpp
-c:\users\sitan\documents\github\banlist\cqsdkcpp\debug.cpp(25): error C2039: “Eip”: 不是“_CONTEXT”的成员
-  e:\windows kits\10\include\10.0.17134.0\um\winnt.h(3824): note: 参见“_CONTEXT”的声明
-c:\users\sitan\documents\github\banlist\cqsdkcpp\debug.cpp(27): error C2039: “Esp”: 不是“_CONTEXT”的成员
-  e:\windows kits\10\include\10.0.17134.0\um\winnt.h(3824): note: 参见“_CONTEXT”的声明
-c:\users\sitan\documents\github\banlist\cqsdkcpp\debug.cpp(29): error C2039: “Ebp”: 不是“_CONTEXT”的成员
-  e:\windows kits\10\include\10.0.17134.0\um\winnt.h(3824): note: 参见“_CONTEXT”的声明
+c:\users\sitan\documents\github\banlist\cqsdkcpp\cqtools.cpp(67): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  Unpack.cpp
+c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(56): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(66): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(77): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
   BanList.cpp
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(25): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(26): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqtools.h(27): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqevebasic.h(5): error C2143: 语法错误: 缺少“;”(在“namespace”的前面)
+c:\users\sitan\documents\github\banlist\cqsdk\cqevebasic.h(5): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(83): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(87): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(99): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(102): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(104): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(109): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+  DiceMsgSend.cpp
+  dllmain.cpp
+  GlobalVar.cpp
+  MysqlClient.cpp
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(48): warning C4101: “i”: 未引用的局部变量
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(67): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(70): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(96): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(99): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(122): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(125): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(146): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+  NameGenerator.cpp
+c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(40): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(41): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(47): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(48): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(54): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(55): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  NameStorage.cpp
+  StorageBase.cpp
+  RandomGenerator.cpp
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(30): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(30): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(30): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C2065: “_emit”: 未声明的标识符
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(32): error C2143: 语法错误: 缺少“;”(在“}”的前面)
   正在生成代码...
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(138): warning C4715: “DeleteBlack”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(87): warning C4715: “QueryBlack”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(112): warning C4715: “InsertBlack”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(158): warning C4715: “ModifyData”: 不是所有的控件路径都返回值

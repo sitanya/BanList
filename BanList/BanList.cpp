@@ -26,6 +26,9 @@
 #include <mutex>
 #include "mysql.h"
 #include "MysqlClient.h"
+#include "winmain.h"
+#include "CQAPI.h"
+#include "stdafx.h"
 
 #include "APPINFO.h"
 #include "CQEVE_ALL.h"
@@ -404,7 +407,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 	if (eve.isSystem()) {
 		if (eve.message.find("被管理员禁言") != string::npos &&
 			eve.message.find(to_string(getLoginQQ())) != string::npos) {
-			string strMsg = "在群\"" + getGroupList()[eve.fromGroup] + "\"(" + to_string(eve.fromGroup) +
+			string strMsg = "在群 " + getGroupList()[eve.fromGroup] + "(" + to_string(eve.fromGroup) +
 				")中被禁言,已将群拉黑并自动退出。";
 
 			InsertBlack(eve.fromGroup, true);
@@ -441,8 +444,8 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 		InsertBlack(fromGroup, true);
 
 		AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
-		AddMsgToQueue("已将" + to_string(fromQQ) + "列入封禁名单！" + "原因：被踢出群" + to_string(fromGroup), MASTER);
-		AddMsgToQueue("已将" + to_string(fromQQ) + "列入封禁名单！" + "原因：被踢出群" + to_string(fromGroup), MasterGroup, false);
+		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTER);
+		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MasterGroup, false);
 		return 1;
 	}
 	return 0;
@@ -452,7 +455,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 	if (beingOperateQQ == getLoginQQ())
 	{
 		if (getGroupList().size() < 20) {
-			AddMsgToQueue("收到" + to_string(fromGroup) + "的群邀请，因群小于20人QQ无审核通知，已自动同意", MasterGroup, false);
+			AddMsgToQueue("收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MasterGroup, false);
 		}
 		AddMsgToQueue("各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分", fromGroup, false);
 	}
@@ -468,14 +471,14 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			"您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。",
 			fromQQ);
 		AddMsgToQueue(
-			"收到黑名单内:" + to_string(fromQQ) + "的好友请求，已自动拒绝",
+			"收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 			MASTER);
-		AddMsgToQueue("收到黑名单内:" + to_string(fromQQ) + "的好友请求，已自动拒绝",
+		AddMsgToQueue("收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 			MasterGroup, false);
 		setFriendAddRequest(responseFlag, 2, "您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。");
 		return 1;
 	}
-	AddMsgToQueue("收到" + to_string(fromQQ) + "的好友请求，已自动同意", MasterGroup, false);
+	AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MasterGroup, false);
 	setFriendAddRequest(responseFlag, 1, "各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分");
 	return 1;
 }
@@ -483,7 +486,7 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 {
 	setGroupAddRequest(responseFlag, 2, 1, "");
 	if (subType == 2) {
-		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：(" +
+		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群："+ getGroupList()[fromGroup] +"(" +
 			to_string(fromGroup) + ")。";
 		set<long long> BanedGroup;
 
@@ -518,6 +521,11 @@ EVE_Exit(__eventExit)
 	if (!Enabled)
 		return 0;
 
+	return 0;
+}
+
+EVE_Menu(__eventTestSwitch) {
+	ShowMainWindow(getAuthCode());
 	return 0;
 }
 MUST_AppInfo_RETURN(CQAPPID);

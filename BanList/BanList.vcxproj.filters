@@ -66,6 +66,12 @@
     <ClCompile Include="RandomGenerator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="winmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APPINFO.h">
@@ -143,16 +149,25 @@
     <ClInclude Include="MysqlClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="NameGenerator.cpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="NameStorage.cpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="StorageBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RandomGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NameGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NameStorage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="winmain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -183,31 +183,31 @@ LRESULT CALLBACK WindowProc(
 	case WM_COMMAND:
 	{
 		char Msg[500] = "";
-	switch (LOWORD(wParam))
-	{
-	case ID_BUTTON_QQ:
-	{
-		TCHAR ManagerQQ[20];
-		GetWindowText(hEditManagerQQ, ManagerQQ, 20);
-		setMaster(_wtoi(ManagerQQ));
-		break;
-	}
-	case ID_BUTTON_Group:
-		TCHAR ManagerGroup[20];
-		GetWindowText(hEditManagerGroup, ManagerGroup, 200);
-		setMASTERGroup(_wtoi(ManagerGroup));
-		break;
-	case ID_EDIT_MSG:
-		TCHAR MSG[500];
-		GetWindowText(hEditMsg, MSG, 500);
-		TcharToChar(MSG, Msg);
-		setMSG(Msg);
-		break;
-	default:
-		break;
-	}
+		switch (LOWORD(wParam))
+		{
+		case ID_BUTTON_QQ:
+		{
+			TCHAR ManagerQQ[20];
+			GetWindowText(hEditManagerQQ, ManagerQQ, 20);
+			setMaster(_wtoi(ManagerQQ));
+			break;
+		}
+		case ID_BUTTON_Group:
+			TCHAR ManagerGroup[20];
+			GetWindowText(hEditManagerGroup, ManagerGroup, 200);
+			setMASTERGroup(_wtoi(ManagerGroup));
+			break;
+		case ID_EDIT_MSG:
+			TCHAR MSG[500];
+			GetWindowText(hEditMsg, MSG, 500);
+			TcharToChar(MSG, Msg);
+			setMSG(Msg);
+			break;
+		default:
+			break;
+		}
 
-	return 0;
+		return 0;
 	}
 	case WM_DESTROY:
 	{

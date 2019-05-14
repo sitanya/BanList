@@ -47,17 +47,7 @@ void initMessage(){ Messages["inputGroup"] = "入群信息"; }
 
 unique_ptr<NameStorage> Name;
 
-void setMaster(int Master) {
-	MASTER = Master;
-}
 
-void setMASTERGroup(int MasterGroup) {
-	MASTERGroup = MasterGroup;
-}
-
-void setMSG(char Msg[500]) {
-	Messages["inputGroup"] = Msg;
-}
 
 inline void init(string &msg) {
 	msg_decode(msg);
@@ -166,6 +156,24 @@ std::string getName(long long QQ, long long GroupID = 0)
 	}
 	/*私聊*/
 	return strip(getStrangerInfo(QQ).nick);
+}
+
+void setMaster(int Master) {
+	MASTER = Master;
+}
+
+void setMASTERGroup(int MasterGroup) {
+	MASTERGroup = MasterGroup;
+}
+
+void setMSG(char Msg[500]) {
+	string tmp = Msg;
+	vector<string> tmp2 = split(tmp, "\\n");
+	string tmp3 = "";
+	for (int i = 0; i < tmp2.size(); i++) {
+		tmp3 += tmp2[i] + "\n";
+	}
+	Messages["inputGroup"] = tmp3.substr(0,tmp3.length()-1);
 }
 
 struct SourceType {
@@ -462,8 +470,8 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 		InsertBlack(fromGroup, true);
 
 		AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
-		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTER);
-		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTERGroup, false);
+		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
+		AddMsgToQueue(strAt+"已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTERGroup, false);
 		return 1;
 	}
 	return 0;
@@ -473,7 +481,8 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 	if (beingOperateQQ == getLoginQQ())
 	{
 		if (getGroupList().size() < 20) {
-			AddMsgToQueue("收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
+			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
+			AddMsgToQueue(strAt+"收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
 		}
 		AddMsgToQueue(Messages["inputGroup"], fromGroup, false);
 	}
@@ -488,10 +497,8 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 		AddMsgToQueue(
 			"您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。",
 			fromQQ);
-		AddMsgToQueue(
-			"收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
-			MASTER);
-		AddMsgToQueue("收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
+		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
+		AddMsgToQueue(strAt+"收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 			MASTERGroup, false);
 		setFriendAddRequest(responseFlag, 2, "");
 		return 1;
@@ -524,7 +531,8 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 			strMsg += "已同意";
 			setGroupAddRequest(responseFlag, 2, 1, "");
 		}
-		AddMsgToQueue(strMsg, MASTERGroup, false);
+		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
+		AddMsgToQueue(strAt+strMsg, MASTERGroup, false);
 		return 1;
 	}
 	return 0;

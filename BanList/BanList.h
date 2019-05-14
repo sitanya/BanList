@@ -19,5 +19,6 @@
 
 void setMASTERGroup(int MasterGroup);
 void setMaster(int MasterQQ);
+void setMSG(char MSG[500]);
 
 #endif /*__BanListVAR__*/

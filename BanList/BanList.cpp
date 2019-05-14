@@ -36,20 +36,27 @@
 #include "GlobalVar.h"
 #include "DiceMsgSend.h"
 #include "NameStorage.h"
+#include "BanList.h"
 
 using namespace std;
 using namespace CQ;
 int MASTER = 450609203;
 int MASTERGroup = 112380103;
+map<string, string> Messages;
+void initMessage(){ Messages["inputGroup"] = "入群信息"; }
 
 unique_ptr<NameStorage> Name;
 
-void setMaster(long long Master) {
+void setMaster(int Master) {
 	MASTER = Master;
 }
 
-void setMASTERGroup(long long MasterGroup) {
+void setMASTERGroup(int MasterGroup) {
 	MASTERGroup = MasterGroup;
+}
+
+void setMSG(char Msg[500]) {
+	Messages["inputGroup"] = Msg;
 }
 
 inline void init(string &msg) {
@@ -175,6 +182,7 @@ struct SourceType {
 using PropType = map<string, int>;
 EVE_Enable(__eventEnable)
 {
+	initMessage();
 	//Wait until the thread terminates
 	while (msgSendThreadRunning)
 		Sleep(10);
@@ -396,13 +404,11 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		eve.message_block();
 		return;
 	}
-	else if (strLowerMessage.substr(intMsgCnt, 9) == "showmaster")
+	else if (strLowerMessage.substr(intMsgCnt, 10) == "showmaster")
 	{
-	AddMsgToQueue(to_string(MASTER),450609203);
+		AddMsgToQueue(Messages["inputGroup"],450609203);
+		return;
 	}
-
-
-
 	return;
 }
 EVE_GroupMsg_EX(__eventGroupMsg)
@@ -469,7 +475,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 		if (getGroupList().size() < 20) {
 			AddMsgToQueue("收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
 		}
-		AddMsgToQueue("各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分", fromGroup, false);
+		AddMsgToQueue(Messages["inputGroup"], fromGroup, false);
 	}
 	return 1;
 }
@@ -492,6 +498,7 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 	}
 	AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MASTERGroup, false);
 	setFriendAddRequest(responseFlag, 1, "");
+	AddMsgToQueue(Messages["inputGroup"], fromQQ);
 	return 1;
 }
 EVE_Request_AddGroup(__eventRequest_AddGroup)

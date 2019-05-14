@@ -14,6 +14,15 @@ int g_dpiy = DEFAULT_DPIY;
 
 HINSTANCE g_hInstance = GetModuleHandle(NULL);
 
+void TcharToChar(const TCHAR * tchar, char * _char)
+{
+	int iLength;
+	//获取字节长度   
+	iLength = WideCharToMultiByte(CP_ACP, 0, tchar, -1, NULL, 0, NULL, NULL);
+	//将tchar值赋给_char    
+	WideCharToMultiByte(CP_ACP, 0, tchar, -1, _char, iLength, NULL, NULL);
+}
+
 int ShowMainWindow(int32_t AuthCode)
 {
 	auth = AuthCode;
@@ -173,25 +182,32 @@ LRESULT CALLBACK WindowProc(
 	}
 	case WM_COMMAND:
 	{
-		switch (LOWORD(wParam))
-		{
-		case ID_BUTTON_QQ:
-		{
-			TCHAR ManagerQQ[20];
-			TCHAR ManagerGroup[20];
-			GetWindowText(hEditManagerQQ, ManagerQQ, 20);
-			GetWindowText(hEditManagerGroup, ManagerGroup, 200);
-			setMaster(_wtoi(ManagerQQ));
-			break;
-		}
-		case ID_BUTTON_Group:
-			SendMessage(hEditManagerQQ, WM_SETTEXT, 0, NULL);
-			SendMessage(hEditMsg, WM_SETTEXT, 0, NULL);
-			break;
-		default:
-			break;
-		}
-		return 0;
+		char Msg[500] = "";
+	switch (LOWORD(wParam))
+	{
+	case ID_BUTTON_QQ:
+	{
+		TCHAR ManagerQQ[20];
+		GetWindowText(hEditManagerQQ, ManagerQQ, 20);
+		setMaster(_wtoi(ManagerQQ));
+		break;
+	}
+	case ID_BUTTON_Group:
+		TCHAR ManagerGroup[20];
+		GetWindowText(hEditManagerGroup, ManagerGroup, 200);
+		setMASTERGroup(_wtoi(ManagerGroup));
+		break;
+	case ID_EDIT_MSG:
+		TCHAR MSG[500];
+		GetWindowText(hEditMsg, MSG, 500);
+		TcharToChar(MSG, Msg);
+		setMSG(Msg);
+		break;
+	default:
+		break;
+	}
+
+	return 0;
 	}
 	case WM_DESTROY:
 	{

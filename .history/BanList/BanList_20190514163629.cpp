@@ -475,7 +475,7 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			MASTER);
 		AddMsgToQueue("收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 			MasterGroup, false);
-		setFriendAddRequest(responseFlag, 2, "");
+		setFriendAddRequest(responseFlag, 2, "您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。");
 		return 1;
 	}
 	AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MasterGroup, false);

@@ -253,6 +253,7 @@
     <ClInclude Include="winmain.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="BanList.h" />
     </ItemGroup>
   <ItemGroup>
     <Library Include="CQP.lib" />

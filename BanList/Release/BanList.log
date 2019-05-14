@@ -1,6 +1,4 @@
 ﻿E:\VirsualStudio\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(Release\)包含从另一个项目(com.langzaigg.BanList.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-  winmain.cpp
-c:\users\sitan\documents\github\banlist\banlist\winmain.cpp(162): warning C4101: “qqNum”: 未引用的局部变量
     正在创建库 C:\Users\sitan\Documents\GitHub\BanList\Release\app.lib 和对象 C:\Users\sitan\Documents\GitHub\BanList\Release\app.exp
   正在生成代码
 c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(87): warning C4715: “QueryBlack”: 不是所有的控件路径都返回值

@@ -40,7 +40,7 @@
 using namespace std;
 using namespace CQ;
 const int MASTER = 450609203;
-const int MasterGroup = 112380103;
+const int MASTERGroup = 112380103;
 
 unique_ptr<NameStorage> Name;
 
@@ -414,7 +414,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 
 			setGroupLeave(eve.fromGroup);
 			AddMsgToQueue(strMsg, MASTER);
-			AddMsgToQueue(strMsg, MasterGroup, false);
+			AddMsgToQueue(strMsg, MASTERGroup, false);
 		}
 		return;
 	}
@@ -445,7 +445,7 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 
 		AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
 		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTER);
-		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MasterGroup, false);
+		AddMsgToQueue("已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTERGroup, false);
 		return 1;
 	}
 	return 0;
@@ -455,7 +455,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 	if (beingOperateQQ == getLoginQQ())
 	{
 		if (getGroupList().size() < 20) {
-			AddMsgToQueue("收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MasterGroup, false);
+			AddMsgToQueue("收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
 		}
 		AddMsgToQueue("各位好，这里是缇娜·里歇尔，原坂本酱\n本骰子持有十多种与跑团相关的独有增强功能，详情查看.help下半部分", fromGroup, false);
 	}
@@ -474,11 +474,11 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			"收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 			MASTER);
 		AddMsgToQueue("收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
-			MasterGroup, false);
+			MASTERGroup, false);
 		setFriendAddRequest(responseFlag, 2, "");
 		return 1;
 	}
-	AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MasterGroup, false);
+	AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MASTERGroup, false);
 	setFriendAddRequest(responseFlag, 1, "");
 	return 1;
 }
@@ -505,7 +505,7 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 			strMsg += "已同意";
 			setGroupAddRequest(responseFlag, 2, 1, "");
 		}
-		AddMsgToQueue(strMsg, MasterGroup, false);
+		AddMsgToQueue(strMsg, MASTERGroup, false);
 		return 1;
 	}
 	return 0;

@@ -4,8 +4,8 @@
 #define  ID_STATIC_MSG     1002
 #define  ID_EDIT_QQ        2001   
 #define  ID_EDIT_MSG       2002
-#define  ID_BUTTON_SEND    3001
-#define  ID_BUTTON_CLEAR   3002
+#define  ID_BUTTON_QQ    3001
+#define  ID_BUTTON_Group   3002
 
 #define  DEFAULT_DPIX      96
 #define  DEFAULT_DPIY      96

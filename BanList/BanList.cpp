@@ -493,7 +493,6 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 		BanedGroup = QueryBlack(true);
 		set<long long> BanedQQList;
 		BanedQQList = QueryBlack(false);
-		AddMsgToQueue(to_string(fromGroup), fromQQ);
 		if (BanedGroup.count(fromGroup)) {
 			strMsg += "\n已拒绝（群在黑名单中）";
 			setGroupAddRequest(responseFlag, 2, 2, "");

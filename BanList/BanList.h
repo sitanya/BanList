@@ -13,12 +13,21 @@
 * You should have received a copy of the GNU Affero General Public License along with this
 * program. If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <map>
+using namespace std;
+
 #pragma once
 #ifndef __BanListVAR__
 #define __BanListVAR__
 
 void setMASTERGroup(int MasterGroup);
 void setMaster(int MasterQQ);
-void setMSG(char MSG[500]);
+void setQQMSG(char MSG[500]);
+void setGroupMSG(char MSG[500]);
+void setQQBanMSG(char MSG[500]);
+void setGroupBanMSG(char MSG[500]);
+map<string, string> getMSG();
+void saveMysql();
 
 #endif /*__BanListVAR__*/

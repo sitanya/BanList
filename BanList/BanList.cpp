@@ -43,7 +43,6 @@ using namespace CQ;
 int MASTER = 450609203;
 int MASTERGroup = 112380103;
 map<string, string> Messages;
-void initMessage(){ Messages["inputGroup"] = "入群信息"; }
 
 unique_ptr<NameStorage> Name;
 
@@ -166,22 +165,81 @@ void setMASTERGroup(int MasterGroup) {
 	MASTERGroup = MasterGroup;
 }
 
-void setMSG(char Msg[500]) {
+void setQQMSG(char Msg[500]) {
 	string tmp = Msg;
 	vector<string> tmp2 = split(tmp, "\\n");
 	string tmp3 = "";
 	for (int i = 0; i < tmp2.size(); i++) {
 		tmp3 += tmp2[i] + "\n";
 	}
-	Messages["inputGroup"] = tmp3.substr(0,tmp3.length()-1);
+	Messages["QQMsg"] = tmp3.substr(0, tmp3.length() - 1);
 }
+
+void setGroupMSG(char Msg[500]) {
+	string tmp = Msg;
+	vector<string> tmp2 = split(tmp, "\\n");
+	string tmp3 = "";
+	for (int i = 0; i < tmp2.size(); i++) {
+		tmp3 += tmp2[i] + "\n";
+	}
+	Messages["GroupMsg"] = tmp3.substr(0, tmp3.length() - 1);
+}
+
+void setQQBanMSG(char Msg[500]) {
+	string tmp = Msg;
+	vector<string> tmp2 = split(tmp, "\\n");
+	string tmp3 = "";
+	for (int i = 0; i < tmp2.size(); i++) {
+		tmp3 += tmp2[i] + "\n";
+	}
+	Messages["BanQQMsg"] = tmp3.substr(0, tmp3.length() - 1);
+}
+
+void setGroupBanMSG(char Msg[500]) {
+	string tmp = Msg;
+	vector<string> tmp2 = split(tmp, "\\n");
+	string tmp3 = "";
+	for (int i = 0; i < tmp2.size(); i++) {
+		tmp3 += tmp2[i] + "\n";
+	}
+	Messages["BanGroupMsg"] = tmp3.substr(0, tmp3.length() - 1);
+}
+
+map<string, string> getMSG() {
+	map<string, string> Messages_tmp = QueryMsg(getLoginQQ());
+	if (!Messages_tmp.empty()) {
+		Messages["QQ"] = Messages_tmp["QQ"];
+		Messages["MASTER"] = Messages_tmp["MASTER"];
+		Messages["MASTERGroup"] = Messages_tmp["MASTERGroup"];
+		Messages["QQMsg"] = Messages_tmp["QQMsg"];
+		Messages["GroupMsg"] = Messages_tmp["GroupMsg"];
+		Messages["BanQQMsg"] = Messages_tmp["BanQQMsg"];
+		Messages["BanGroupMsg"] = Messages_tmp["BanGroupMsg"];
+		MASTER = stoi(Messages_tmp["MASTER"]);
+		MASTERGroup = stoi(Messages_tmp["MASTERGroup"]);
+
+		return Messages_tmp;
+	}
+	else {
+		Messages["MASTER"] = to_string(MASTER);
+		Messages["MASTERGroup"] = to_string(MASTERGroup);
+		return Messages;
+	}
+
+}
+
+void saveMysql() {
+	Messages["MASTER"] = to_string(MASTER);
+	Messages["MASTERGroup"] = to_string(MASTERGroup);
+	InsertMsg(Messages, getLoginQQ());
+}
+
 
 struct SourceType {
 	SourceType(long long a, int b, long long c) : QQ(a), Type(b), GrouporDiscussID(c) {};
 	long long QQ = 0;
 	int Type = 0;
 	long long GrouporDiscussID = 0;
-
 	bool operator<(SourceType b) const {
 		return this->QQ < b.QQ;
 	}
@@ -190,7 +248,8 @@ struct SourceType {
 using PropType = map<string, int>;
 EVE_Enable(__eventEnable)
 {
-	initMessage();
+	initMsg(getLoginQQ());
+	Messages = getMSG();
 	//Wait until the thread terminates
 	while (msgSendThreadRunning)
 		Sleep(10);
@@ -412,10 +471,10 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		eve.message_block();
 		return;
 	}
-	else if (strLowerMessage.substr(intMsgCnt, 10) == "showmaster")
+	else if (strLowerMessage.substr(intMsgCnt, 4) == "test")
 	{
-		AddMsgToQueue(Messages["inputGroup"],450609203);
-		return;
+		AddMsgToQueue(to_string(MASTER), 450609203);
+		AddMsgToQueue(to_string(MASTER), 450609203);
 	}
 	return;
 }
@@ -471,7 +530,7 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 
 		AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
 		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-		AddMsgToQueue(strAt+"已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup]+"("+to_string(fromGroup)+")", MASTERGroup, false);
+		AddMsgToQueue(strAt + "已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")", MASTERGroup, false);
 		return 1;
 	}
 	return 0;
@@ -482,9 +541,9 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 	{
 		if (getGroupList().size() < 20) {
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-			AddMsgToQueue(strAt+"收到" + getGroupList()[fromGroup]+"("+to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
+			AddMsgToQueue(strAt + "收到" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
 		}
-		AddMsgToQueue(Messages["inputGroup"], fromGroup, false);
+		AddMsgToQueue(Messages["GroupMsg"], fromGroup, false);
 	}
 	return 1;
 }
@@ -498,21 +557,21 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			"您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。",
 			fromQQ);
 		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-		AddMsgToQueue(strAt+"收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
+		AddMsgToQueue(strAt + "收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 			MASTERGroup, false);
 		setFriendAddRequest(responseFlag, 2, "");
 		return 1;
 	}
 	AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MASTERGroup, false);
 	setFriendAddRequest(responseFlag, 1, "");
-	AddMsgToQueue(Messages["inputGroup"], fromQQ);
+	AddMsgToQueue(Messages["QQMsg"], fromQQ);
 	return 1;
 }
 EVE_Request_AddGroup(__eventRequest_AddGroup)
 {
 	setGroupAddRequest(responseFlag, 2, 1, "");
 	if (subType == 2) {
-		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群："+ getGroupList()[fromGroup] +"(" +
+		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：" + getGroupList()[fromGroup] + "(" +
 			to_string(fromGroup) + ")。";
 		set<long long> BanedGroup;
 
@@ -521,10 +580,12 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 		BanedQQList = QueryBlack(false);
 		if (BanedGroup.count(fromGroup)) {
 			strMsg += "\n已拒绝（群在黑名单中）";
+			AddMsgToQueue(Messages["BanGroupMsg"], fromGroup);
 			setGroupAddRequest(responseFlag, 2, 2, "");
 		}
 		else if (BanedQQList.count(fromQQ)) {
 			strMsg += "\n已拒绝（用户在黑名单中）";
+			AddMsgToQueue(Messages["BanQQMsg"], fromQQ);
 			setGroupAddRequest(responseFlag, 2, 2, "");
 		}
 		else {
@@ -532,7 +593,7 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 			setGroupAddRequest(responseFlag, 2, 1, "");
 		}
 		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-		AddMsgToQueue(strAt+strMsg, MASTERGroup, false);
+		AddMsgToQueue(strAt + strMsg, MASTERGroup, false);
 		return 1;
 	}
 	return 0;
@@ -554,4 +615,5 @@ EVE_Menu(__eventTestSwitch) {
 	ShowMainWindow(getAuthCode());
 	return 0;
 }
+
 MUST_AppInfo_RETURN(CQAPPID);

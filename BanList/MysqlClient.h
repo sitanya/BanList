@@ -19,14 +19,16 @@
 
 #include <string>
 #include <set>
+#include <map>
 
 using namespace std;
 
-bool ConnectDatabase();
-void FreeConnect();
 set<long long> QueryBlack(bool);
 bool InsertBlack(long long,bool);
 bool ModifyData();
 bool DeleteBlack(long long,bool);
+map<string, string> QueryMsg(long long);
+bool InsertMsg(map<string, string>, long long);
+bool initMsg(long long);
 
 #endif /*__MYSQlVAR__*/

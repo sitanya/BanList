@@ -3,6 +3,10 @@
 #include "CQAPI.h"
 #include <Windows.h>
 #include "BanList.h"
+#include <map>
+#include <CString>
+
+using namespace std;
 
 int auth = -1;
 
@@ -21,6 +25,14 @@ void TcharToChar(const TCHAR * tchar, char * _char)
 	iLength = WideCharToMultiByte(CP_ACP, 0, tchar, -1, NULL, 0, NULL, NULL);
 	//将tchar值赋给_char    
 	WideCharToMultiByte(CP_ACP, 0, tchar, -1, _char, iLength, NULL, NULL);
+}
+
+void CharToTchar(const char * _char, TCHAR * tchar)
+{
+	int iLength;
+
+	iLength = MultiByteToWideChar(CP_ACP, 0, _char, strlen(_char) + 1, NULL, 0);
+	MultiByteToWideChar(CP_ACP, 0, _char, strlen(_char) + 1, tchar, iLength);
 }
 
 int ShowMainWindow(int32_t AuthCode)
@@ -59,8 +71,8 @@ int ShowMainWindow(int32_t AuthCode)
 		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,        //窗口外观样式  
 		DPIX(38),             //窗口相对于父级的X坐标  
 		DPIY(20),             //窗口相对于父级的Y坐标  
-		DPIX(300),                //窗口的宽度  
-		DPIY(380),                //窗口的高度  
+		DPIX(2000),                //窗口的宽度  
+		DPIY(3800),                //窗口的高度  
 		NULL,               //没有父窗口，为NULL  
 		NULL,               //没有菜单，为NULL  
 		g_hInstance,          //当前应用程序的实例句柄  
@@ -90,23 +102,29 @@ LRESULT CALLBACK WindowProc(
 )
 {
 	// 声明控件
-	static HWND hEditManagerQQText, hStaticMsg;
-	static HWND hEditManagerGroupText;
-	static HWND hEditManagerQQ, hEditMsg;
-	static HWND hButtonSend, hButtonClear;
-	static HWND hEditManagerGroup;
+	static HWND hEditQQText;
+	static HWND hEditGroupText;
+	static HWND hGroupMsgText, hGroupMsgStatic;
+	static HWND hQQMsgText, hQQMsgStatic;
+	static HWND hQQBanMsgStatic, hQQBanMsgText;
+	static HWND hGroupBanMsgText, hGroupBanMsg;
+	static HWND hSaveButton;
+	static HWND hLeaveGroupButton;
+
 	switch (uMsg)
 	{
 	case WM_CREATE:
 	{
+		TCHAR Msg[500];
+		map<string, string> Messages = getMSG();
 		HFONT hFontRegular, hFontBold;
 		HDC hDC;
 		hDC = GetDC(hwnd);
-		hFontRegular = CreateFont(DPIY(20), 0, 0, 0, FW_THIN, FALSE, FALSE, FALSE,
+		hFontRegular = CreateFont(DPIY(15), 0, 0, 0, FW_THIN, FALSE, FALSE, FALSE,
 			GB2312_CHARSET, OUT_CHARACTER_PRECIS,
 			CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY,
 			FF_MODERN, TEXT("微软雅黑"));
-		hFontBold = CreateFont(DPIY(20), 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+		hFontBold = CreateFont(DPIY(15), 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 			GB2312_CHARSET, OUT_CHARACTER_PRECIS,
 			CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY,
 			FF_MODERN, TEXT("微软雅黑"));
@@ -114,68 +132,145 @@ LRESULT CALLBACK WindowProc(
 
 		// ID_EDIT_QQ
 		// 目标 QQ 号码 文本框（只能输入数字）
-		hEditManagerQQ = CreateWindow(TEXT("Edit"), NULL,
+		hEditQQText = CreateWindow(TEXT("Edit"), NULL,
 			WS_VISIBLE | WS_CHILD | ES_AUTOHSCROLL | ES_LEFT | ES_NUMBER | WS_BORDER,
 			DPIX(30), DPIY(20), DPIX(150), DPIY(25),
 			hwnd, (HMENU)ID_EDIT_QQ, g_hInstance, NULL);
-		SendMessage(hEditManagerQQ, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		SendMessage(hEditQQText, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		if (Messages.find("QQ") != Messages.end()) {
+			CharToTchar(Messages["MASTER"].c_str(), Msg);
+			SendMessage(hEditQQText, WM_SETTEXT, (WPARAM)hFontRegular, (LPARAM)Msg);
+		}
 
-		// ID_STATIC_QQ
-		// 目标 QQ 号码 标签提示
-		hEditManagerQQText = CreateWindow(TEXT("Button"), TEXT("管理员账号"),
-			WS_VISIBLE | WS_CHILD | SS_LEFT,
-			DPIX(190), DPIY(20), DPIX(90), DPIY(25),
-			hwnd, (HMENU)ID_BUTTON_QQ, g_hInstance, NULL);
-		SendMessage(hEditManagerQQText, WM_SETFONT, (WPARAM)hFontBold, 1);
 
 		// ID_EDIT_QQ
 	// 目标 QQ 号码 文本框（只能输入数字）
-		hEditManagerGroup = CreateWindow(TEXT("Edit"), NULL,
+		hEditGroupText = CreateWindow(TEXT("Edit"), NULL,
 			WS_VISIBLE | WS_CHILD | ES_AUTOHSCROLL | ES_LEFT | ES_NUMBER | WS_BORDER,
 			DPIX(30), DPIY(50), DPIX(150), DPIY(20),
-			hwnd, (HMENU)ID_EDIT_QQ, g_hInstance, NULL);
-		SendMessage(hEditManagerGroup, WM_SETFONT, (WPARAM)hFontRegular, 1);
-
-		// ID_STATIC_QQ
-		// 目标 QQ 号码 标签提示
-		hEditManagerGroupText = CreateWindow(TEXT("Button"), TEXT("审核群号"),
-			WS_VISIBLE | WS_CHILD | SS_LEFT,
-			DPIX(190), DPIY(50), DPIX(90), DPIY(20),
-			hwnd, (HMENU)ID_BUTTON_Group, g_hInstance, NULL);
-		SendMessage(hEditManagerGroupText, WM_SETFONT, (WPARAM)hFontBold, 1);
+			hwnd, (HMENU)ID_EDIT_GROUP, g_hInstance, NULL);
+		SendMessage(hEditGroupText, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		if (Messages.find("QQ") != Messages.end()) {
+			CharToTchar(Messages["MASTERGroup"].c_str(), Msg);
+			SendMessage(hEditGroupText, WM_SETTEXT, (WPARAM)hFontRegular, (LPARAM)Msg);
+		}
 
 
 		// ID_STATIC_MSG
 		// 发送的消息内容 标签提示
-		hStaticMsg = CreateWindow(TEXT("Static"), TEXT("入群信息："),
+		hGroupMsgStatic = CreateWindow(TEXT("Static"), TEXT("入群信息："),
 			WS_VISIBLE | WS_CHILD | SS_LEFT,
-			DPIX(30), DPIY(80), DPIX(330), DPIY(20),
+			DPIX(300), DPIY(20), DPIX(330), DPIY(20),
 			hwnd, (HMENU)ID_STATIC_MSG, g_hInstance, NULL);
-		SendMessage(hStaticMsg, WM_SETFONT, (WPARAM)hFontBold, 1);
+		SendMessage(hGroupMsgStatic, WM_SETFONT, (WPARAM)hFontBold, 1);
+
 
 		// ID_EDIT_MSG
 		// 发送的消息内容 文本框（多行）
-		hEditMsg = CreateWindow(TEXT("Edit"), NULL,
+		hGroupMsgText = CreateWindow(TEXT("Edit"), NULL,
 			WS_VISIBLE | WS_CHILD | ES_AUTOVSCROLL | ES_MULTILINE | WS_BORDER,
-			DPIX(30), DPIY(110), DPIX(240), DPIY(200),
-			hwnd, (HMENU)ID_EDIT_MSG, g_hInstance, NULL);
-		SendMessage(hEditMsg, WM_SETFONT, (WPARAM)hFontRegular, 1);
+			DPIX(300), DPIY(40), DPIX(240), DPIY(200),
+			hwnd, (HMENU)ID_EDIT_GROUP_MSG, g_hInstance, NULL);
+		SendMessage(hGroupMsgText, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		if (Messages.find("QQ") != Messages.end()) {
+			CharToTchar(Messages["GroupMsg"].c_str(), Msg);
+			SendMessage(hGroupMsgText, WM_SETTEXT, (WPARAM)hFontRegular, (LPARAM)Msg);
+		}
 
-		//// ID_BUTTON_SEND
-		//// 发送 按钮
-		//hButtonSend = CreateWindow(TEXT("Button"), TEXT("发送"),
-		//	WS_VISIBLE | WS_CHILD,
-		//	DPIX(50), DPIY(320), DPIX(150), DPIY(30),
-		//	hwnd, (HMENU)ID_BUTTON_SEND, g_hInstance, NULL);
-		//SendMessage(hButtonSend, WM_SETFONT, (WPARAM)hFontBold, 1);
+		// ID_STATIC_MSG
+	// 发送的消息内容 标签提示
+		hQQMsgStatic = CreateWindow(TEXT("Static"), TEXT("私聊信息："),
+			WS_VISIBLE | WS_CHILD | SS_LEFT,
+			DPIX(300), DPIY(270), DPIX(330), DPIY(20),
+			hwnd, (HMENU)ID_STATIC_MSG, g_hInstance, NULL);
+		SendMessage(hQQMsgStatic, WM_SETFONT, (WPARAM)hFontBold, 1);
 
-		//// ID_BUTTON_CLEAR
-		//// 清空 按钮
-		//hButtonClear = CreateWindow(TEXT("Button"), TEXT("清空"),
-		//	WS_VISIBLE | WS_CHILD,
-		//	DPIX(250), DPIY(320), DPIX(150), DPIY(30),
-		//	hwnd, (HMENU)ID_BUTTON_CLEAR, g_hInstance, NULL);
-		//SendMessage(hButtonClear, WM_SETFONT, (WPARAM)hFontBold, 1);
+
+		// ID_EDIT_MSG
+		// 发送的消息内容 文本框（多行）
+		hQQMsgText = CreateWindow(TEXT("Edit"), NULL,
+			WS_VISIBLE | WS_CHILD | ES_AUTOVSCROLL | ES_MULTILINE | WS_BORDER,
+			DPIX(300), DPIY(300), DPIX(240), DPIY(200),
+			hwnd, (HMENU)ID_EDIT_QQ_MSG, g_hInstance, NULL);
+		SendMessage(hQQMsgText, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		if (Messages.find("QQ") != Messages.end()) {
+			CharToTchar(Messages["QQMsg"].c_str(), Msg);
+			SendMessage(hQQMsgText, WM_SETTEXT, (WPARAM)hFontRegular, (LPARAM)Msg);
+		}
+
+		// ID_STATIC_MSG
+// 发送的消息内容 标签提示
+		hQQBanMsgStatic = CreateWindow(TEXT("Static"), TEXT("拦截QQ黑名单信息："),
+			WS_VISIBLE | WS_CHILD | SS_LEFT,
+			DPIX(550), DPIY(20), DPIX(330), DPIY(20),
+			hwnd, (HMENU)ID_STATIC_MSG, g_hInstance, NULL);
+		SendMessage(hQQBanMsgStatic, WM_SETFONT, (WPARAM)hFontBold, 1);
+
+		// ID_EDIT_MSG
+		// 发送的消息内容 文本框（多行）
+		hQQBanMsgText = CreateWindow(TEXT("Edit"), NULL,
+			WS_VISIBLE | WS_CHILD | ES_AUTOVSCROLL | ES_MULTILINE | WS_BORDER,
+			DPIX(550), DPIY(40), DPIX(240), DPIY(200),
+			hwnd, (HMENU)ID_EDIT_QQ_BAN_MSG, g_hInstance, NULL);
+		SendMessage(hQQBanMsgText, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		if (Messages.find("QQ") != Messages.end()) {
+			CharToTchar(Messages["BanQQMsg"].c_str(), Msg);
+			SendMessage(hQQBanMsgText, WM_SETTEXT, (WPARAM)hFontRegular, (LPARAM)Msg);
+		}
+
+		// ID_STATIC_MSG
+// 发送的消息内容 标签提示
+		hGroupBanMsgText = CreateWindow(TEXT("Static"), TEXT("拦截群黑名单信息："),
+			WS_VISIBLE | WS_CHILD | SS_LEFT,
+			DPIX(550), DPIY(270), DPIX(330), DPIY(20),
+			hwnd, (HMENU)ID_STATIC_MSG, g_hInstance, NULL);
+		SendMessage(hGroupBanMsgText, WM_SETFONT, (WPARAM)hFontBold, 1);
+
+		// ID_EDIT_MSG
+		// 发送的消息内容 文本框（多行）
+		hGroupBanMsg = CreateWindow(TEXT("Edit"), NULL,
+			WS_VISIBLE | WS_CHILD | ES_AUTOVSCROLL | ES_MULTILINE | WS_BORDER,
+			DPIX(550), DPIY(300), DPIX(240), DPIY(200),
+			hwnd, (HMENU)ID_EDIT_GROUP_BAN_MSG, g_hInstance, NULL);
+		SendMessage(hGroupBanMsg, WM_SETFONT, (WPARAM)hFontRegular, 1);
+		if (Messages.find("QQ") != Messages.end()) {
+			CharToTchar(Messages["BanGroupMsg"].c_str(), Msg);
+			SendMessage(hGroupBanMsg, WM_SETTEXT, (WPARAM)hFontRegular, (LPARAM)Msg);
+		}
+
+
+
+		// ID_STATIC_QQ
+// 目标 QQ 号码 标签提示
+		hSaveButton = CreateWindow(TEXT("Button"), TEXT("保存到云端"),
+			WS_VISIBLE | WS_CHILD | SS_LEFT,
+			DPIX(300), DPIY(600), DPIX(90), DPIY(20),
+			hwnd, (HMENU)ID_BUTTON_SAVE, g_hInstance, NULL);
+		SendMessage(hSaveButton, WM_SETFONT, (WPARAM)hFontBold, 1);
+
+		//自动退出黑名单群聊
+		//不接受该群邀请
+		//拉黑操作者（指踢出）
+		//删除操作者好友
+		//自动同意非黑名单群邀请
+		//被禁言后退群
+		//被禁言后拉黑群聊
+		//拦截黑名单群的机器人功能
+		
+		
+		//群中检测到黑名单用户自动退群
+		//拦截群中黑名单成员的机器人功能
+		//不接受由黑名单用户发出的群邀请(20人以下的群无效）
+		//将黑名单用户列入屏蔽列表，因此也拒绝其群邀请（20人以下的群仍有效）
+		//自动同意非黑名单好友的请求
+		
+		// ID_STATIC_QQ
+// 目标 QQ 号码 标签提示
+		hLeaveGroupButton = CreateWindow(TEXT("Button"), TEXT("群中检测到黑名单用户自动退群"),
+			WS_VISIBLE | WS_CHILD | SS_LEFT | BS_CHECKBOX,
+			DPIX(350), DPIY(600), DPIX(90), DPIY(20),
+			hwnd, (HMENU)ID_BUTTON_SAVE, g_hInstance, NULL);
+		SendMessage(hLeaveGroupButton, WM_SETFONT, (WPARAM)hFontBold, 1);
 
 		ReleaseDC(hwnd, hDC);
 		return 0;
@@ -185,23 +280,38 @@ LRESULT CALLBACK WindowProc(
 		char Msg[500] = "";
 		switch (LOWORD(wParam))
 		{
-		case ID_BUTTON_QQ:
-		{
+		case ID_EDIT_QQ_MSG:
+			TCHAR MSG_QQ[500];
+			GetWindowText(hQQMsgText, MSG_QQ, 500);
+			TcharToChar(MSG_QQ, Msg);
+			setQQMSG(Msg);
+			break;
+		case ID_EDIT_GROUP_MSG:
+			TCHAR MSG_GROUP[500];
+			GetWindowText(hGroupMsgText, MSG_GROUP, 500);
+			TcharToChar(MSG_GROUP, Msg);
+			setGroupMSG(Msg);
+			break;
+		case ID_EDIT_QQ_BAN_MSG:
+			TCHAR MSG_BAN_QQ[500];
+			GetWindowText(hQQBanMsgText, MSG_BAN_QQ, 500);
+			TcharToChar(MSG_BAN_QQ, Msg);
+			setQQBanMSG(Msg);
+			break;
+		case ID_EDIT_GROUP_BAN_MSG:
+			TCHAR MSG_BAN_GROUP[500];
+			GetWindowText(hGroupBanMsg, MSG_BAN_GROUP, 500);
+			TcharToChar(MSG_BAN_GROUP, Msg);
+			setGroupBanMSG(Msg);
+			break;
+		case ID_BUTTON_SAVE:
 			TCHAR ManagerQQ[20];
-			GetWindowText(hEditManagerQQ, ManagerQQ, 20);
+			GetWindowText(hEditQQText, ManagerQQ, 20);
 			setMaster(_wtoi(ManagerQQ));
-			break;
-		}
-		case ID_BUTTON_Group:
 			TCHAR ManagerGroup[20];
-			GetWindowText(hEditManagerGroup, ManagerGroup, 200);
+			GetWindowText(hEditGroupText, ManagerGroup, 20);
 			setMASTERGroup(_wtoi(ManagerGroup));
-			break;
-		case ID_EDIT_MSG:
-			TCHAR MSG[500];
-			GetWindowText(hEditMsg, MSG, 500);
-			TcharToChar(MSG, Msg);
-			setMSG(Msg);
+			saveMysql();
 			break;
 		default:
 			break;

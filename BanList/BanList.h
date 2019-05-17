@@ -29,5 +29,9 @@ void setQQBanMSG(char MSG[500]);
 void setGroupBanMSG(char MSG[500]);
 map<string, string> getMSG();
 void saveMysql();
+map<string, bool> getSwitch();
+void saveSwitch(map<string,bool>);
+void test();
+
 
 #endif /*__BanListVAR__*/

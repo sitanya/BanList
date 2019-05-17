@@ -1,11 +1,33 @@
 ﻿E:\VirsualStudio\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(Release\)包含从另一个项目(com.langzaigg.BanList.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-  winmain.cpp
+  BanList.cpp
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(96): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(97): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(101): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(113): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(116): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(118): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(123): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(185): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(197): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(209): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(221): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(410): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(446): warning C4018: “<”: 有符号/无符号不匹配
     正在创建库 C:\Users\sitan\Documents\GitHub\BanList\Release\app.lib 和对象 C:\Users\sitan\Documents\GitHub\BanList\Release\app.exp
   正在生成代码
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(88): warning C4715: “QueryBlack”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(293): warning C4715: “initMsg”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(193): warning C4715: “QueryMsg”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(139): warning C4715: “DeleteBlack”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(113): warning C4715: “InsertBlack”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(113): warning C4715: “QueryBlack”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(510): warning C4715: “initSwitch”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(439): warning C4715: “initMsg”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(225): warning C4715: “QueryMsg”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(720): warning C4715: “__eventRequest_AddFriend”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(169): warning C4715: “DeleteBlack”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(141): warning C4715: “InsertBlack”: 不是所有的控件路径都返回值
   已完成代码的生成
   BanList.vcxproj -> C:\Users\sitan\Documents\GitHub\BanList\Release\app.dll

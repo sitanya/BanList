@@ -30,5 +30,8 @@ bool DeleteBlack(long long,bool);
 map<string, string> QueryMsg(long long);
 bool InsertMsg(map<string, string>, long long);
 bool initMsg(long long);
+map<string, bool> QuerySwitch(long long);
+bool InsertSwitch(map<string, bool> , long long );
+bool initSwitch(long long );
 
 #endif /*__MYSQlVAR__*/

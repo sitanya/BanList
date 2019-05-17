@@ -13,6 +13,21 @@
 
 #define  ID_BUTTON_SAVE 3001
 
+#define  ID_LeaveBanGroup  4001
+#define  ID_refuseGroup  4002
+#define  ID_BanDetachOperator  4003
+#define  ID_deleteDetachOperator  4004
+#define  ID_agreeGroup  4005
+#define  ID_LeaveForbiddenGroup  4006
+#define  ID_BanForbiddenGroup  4007
+#define  ID_DontRunningInBanGroup  4008
+#define  ID_BanDetachGroup 4009
+
+#define  ID_LeaveGroupByUser  5001
+#define  ID_DontRunningInBanGroupForUser  5002
+#define  ID_refuseBanUser  5003
+#define  ID_agreeUser  5004
+
 #define  DEFAULT_DPIX      96
 #define  DEFAULT_DPIY      96
 

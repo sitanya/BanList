@@ -17,6 +17,6 @@
 #ifndef _APPINFO_
 #define _APPINFO_
 
-#define CQAPPID "com.langzaigg.BanList"
+#define CQAPPID "sitonya.cloud.BanList"
 #define CQAPPINFO CQAPIVERTEXT "," CQAPPID
 #endif /*_APPINFO_*/

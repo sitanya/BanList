@@ -23,9 +23,9 @@ c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(446): warning C4018:
     正在创建库 C:\Users\sitan\Documents\GitHub\BanList\Release\app.lib 和对象 C:\Users\sitan\Documents\GitHub\BanList\Release\app.exp
   正在生成代码
 c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(113): warning C4715: “QueryBlack”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(510): warning C4715: “initSwitch”: 不是所有的控件路径都返回值
 c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(439): warning C4715: “initMsg”: 不是所有的控件路径都返回值
 c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(225): warning C4715: “QueryMsg”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(510): warning C4715: “initSwitch”: 不是所有的控件路径都返回值
 c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(720): warning C4715: “__eventRequest_AddFriend”: 不是所有的控件路径都返回值
 c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(169): warning C4715: “DeleteBlack”: 不是所有的控件路径都返回值
 c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(141): warning C4715: “InsertBlack”: 不是所有的控件路径都返回值

@@ -126,6 +126,21 @@ LRESULT CALLBACK WindowProc(
 	static HWND refuseBanUser;
 	static HWND agreeUser;
 
+	static HWND LeaveBanGroup;
+	static HWND refuseGroup;
+	static HWND BanDetachOperator;
+	static HWND deleteDetachOperator;
+	static HWND agreeGroup;
+	static HWND LeaveForbiddenGroup;
+	static HWND BanForbiddenGroup;
+	static HWND DontRunningInBanGroup;
+	static HWND BanDetachGroup;
+
+	static HWND LeaveGroupByUser;
+	static HWND DontRunningInBanGroupForUser;
+	static HWND refuseBanUser;
+	static HWND agreeUser;
+
 	switch (uMsg)
 	{
 	case WM_CREATE:
@@ -133,18 +148,17 @@ LRESULT CALLBACK WindowProc(
 		TCHAR Msg[500];
 		map<string, string> Messages = getMSG();
 		map<string, bool> Switch = getSwitch();
-
 		HFONT hFontRegular, hFontBold;
 		HDC hDC;
 		hDC = GetDC(hwnd);
 		hFontRegular = CreateFont(DPIY(15), 0, 0, 0, FW_THIN, FALSE, FALSE, FALSE,
-			GB2312_CHARSET, OUT_CHARACTER_PRECIS,
-			CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY,
-			FF_MODERN, TEXT("Î¢ÈíÑÅºÚ"));
+								  GB2312_CHARSET, OUT_CHARACTER_PRECIS,
+								  CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY,
+								  FF_MODERN, TEXT("Î¢ÈíÑÅºÚ"));
 		hFontBold = CreateFont(DPIY(15), 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
-			GB2312_CHARSET, OUT_CHARACTER_PRECIS,
-			CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY,
-			FF_MODERN, TEXT("Î¢ÈíÑÅºÚ"));
+							   GB2312_CHARSET, OUT_CHARACTER_PRECIS,
+							   CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY,
+							   FF_MODERN, TEXT("Î¢ÈíÑÅºÚ"));
 		SelectObject(hDC, hFontRegular);
 
 		// ID_EDIT_QQ
@@ -458,6 +472,7 @@ LRESULT CALLBACK WindowProc(
 			setGroupBanMSG(Msg);
 			break;
 		case ID_BUTTON_SAVE:
+			map<string, bool> Switch;
 			TCHAR ManagerQQ[20];
 			GetWindowText(hEditQQText, ManagerQQ, 20);
 			setMaster(_wtoi(ManagerQQ));

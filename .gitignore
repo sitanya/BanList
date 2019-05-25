@@ -33,11 +33,14 @@
 
 # Directories for temporary file
 /.vs
+/.vscode
+/.history
+/.mypy_cache
 /Dice/Release
 /Dice/Debug
 /Dice/x64
 /Release
 /packages
-
-
+/docs/html
 /Debug
+/x64

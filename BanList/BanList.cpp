@@ -947,7 +947,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 		if (getGroupMemberList(fromGroup).size() < 20)
 		{
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-			AddMsgToQueue(strAt + "BanListRequest收到" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知，已自动同意", MASTERGroup, false);
+			AddMsgToQueue(strAt + "BanListRequest收到" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知(群人数为:"+getGroupMemberList(fromGroup).size()+")，已自动同意", MASTERGroup, false);
 		}
 		if (__eventRequest_AddGroup==null){
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
@@ -968,18 +968,14 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			"您的好友邀请我无法接受。因为您已被拉黑，拉黑原因是被您踢出过群。",
 			fromQQ);
 		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-<<<<<<< HEAD
-		AddMsgToQueue(strAt + "BanListRequest收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
-			MASTERGroup, false);
-=======
 		AddMsgToQueue(strAt + "收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
 					  MASTERGroup, false);
->>>>>>> 157d1223bc23f3c6e0b8d2efb6adf25d69d978d4
 		setFriendAddRequest(responseFlag, 2, "");
 		return 1;
 	}
 	else if (Switch["agreeUser"]) {
-		AddMsgToQueue("收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MASTERGroup, false);
+		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
+		AddMsgToQueue(strAt + "收到" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动同意", MASTERGroup, false);
 		setFriendAddRequest(responseFlag, 1, "");
 		AddMsgToQueue(Messages["QQMsg"], fromQQ);
 		return 1;
@@ -989,13 +985,8 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 {
 	if (subType == 2)
 	{
-<<<<<<< HEAD
-		string strMsg = "BanListRequest群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：" + getGroupList()[fromGroup] + "(" +
-			to_string(fromGroup) + ")。";
-=======
 		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：" + getGroupList()[fromGroup] + "(" +
 						to_string(fromGroup) + ")。";
->>>>>>> 157d1223bc23f3c6e0b8d2efb6adf25d69d978d4
 		set<long long> BanedGroup;
 
 		BanedGroup = QueryBlack(true);

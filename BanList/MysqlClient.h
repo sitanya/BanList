@@ -24,7 +24,7 @@
 using namespace std;
 
 set<long long> QueryBlack(bool);
-bool InsertBlack(long long,bool);
+bool InsertBlack(long long,string,bool);
 bool ModifyData();
 bool DeleteBlack(long long,bool);
 map<string, string> QueryMsg(long long);

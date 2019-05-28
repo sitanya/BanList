@@ -409,7 +409,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		vector<string> qqList = split(strqqnum, ",");
 		for (int i = 0; i < qqList.size(); i++)
 		{
-			InsertBlack(stoll(qqList[i]), false);
+			InsertBlack(stoll(qqList[i]),"命令添加", false);
 			AddMsgToQueue("您因违规操作已被列入封禁名单！", stoll(qqList[i]));
 			AddMsgToQueue("已将" + qqList[i] + "列入封禁名单！", eve.fromQQ);
 		}
@@ -445,7 +445,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		vector<string> qqGroupList = split(strGroupnum, ",");
 		for (int i = 0; i < qqGroupList.size(); i++)
 		{
-			InsertBlack(stoll(qqGroupList[i]), true);
+			InsertBlack(stoll(qqGroupList[i]),"命令添加", true);
 			AddMsgToQueue("群" + qqGroupList[i] + "已被列入封禁名单！", stoll(qqGroupList[i]));
 			AddMsgToQueue("已将此群" + qqGroupList[i] + "列入封禁名单！", eve.fromQQ);
 		}
@@ -645,7 +645,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 				AddMsgToQueue(strMsg, MASTERGroup, false);
 			}
 			if (Switch["BanForbiddenGroup"]) {
-				InsertBlack(eve.fromGroup, true);
+				InsertBlack(eve.fromGroup,"被禁言", true);
 			}
 			return;
 		}
@@ -726,7 +726,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 		vector<string> qqList = split(strqqnum, ",");
 		for (int i = 0; i < qqList.size(); i++)
 		{
-			InsertBlack(stoll(qqList[i]), false);
+			InsertBlack(stoll(qqList[i]),"命令添加", false);
 			AddMsgToQueue("您因违规操作已被列入封禁名单！", stoll(qqList[i]));
 			AddMsgToQueue("已将" + qqList[i] + "列入封禁名单！", MASTERGroup, false);
 		}
@@ -762,7 +762,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 		vector<string> qqGroupList = split(strGroupnum, ",");
 		for (int i = 0; i < qqGroupList.size(); i++)
 		{
-			InsertBlack(stoll(qqGroupList[i]), true);
+			InsertBlack(stoll(qqGroupList[i]),"命令行添加", true);
 			AddMsgToQueue("群" + qqGroupList[i] + "已被列入封禁名单！", stoll(qqGroupList[i]));
 			AddMsgToQueue("已将此群" + qqGroupList[i] + "列入封禁名单！", MASTERGroup, false);
 		}
@@ -926,13 +926,13 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 	{
 
 		if (Switch["BanDetachGroup"]) {
-			InsertBlack(fromGroup, true);
+			InsertBlack(fromGroup,"被"+getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")踢出", true);
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
 			AddMsgToQueue(strAt + "BanListRequest已将群" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")列入黑名单，因为被踢出", MASTERGroup, false);
 		}
 
 		if (Switch["BanDetachOperator"]){
-			InsertBlack(fromQQ, false);
+			InsertBlack(fromQQ,"从群"+ getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")中踢出", false);
 			AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
 			AddMsgToQueue(strAt + "已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")", MASTERGroup, false);

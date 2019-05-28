@@ -113,7 +113,7 @@ set<long long> QueryBlack(bool group)
 }
 
 //插入数据
-bool InsertBlack(long long blackId, bool group)
+bool InsertBlack(long long blackId,string reason bool group)
 {
 	MYSQL *con = mysql_init((MYSQL *)0);
 	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
@@ -121,11 +121,11 @@ bool InsertBlack(long long blackId, bool group)
 		con->reconnect = 1;
 		if (group)
 		{
-			sprintf(query, "insert into blackList(groupId) values ('%s');", lltoString(blackId).c_str()); //可以想办法实现手动在控制台手动输入指令
+			sprintf(query, "insert into blackList(groupId,reason) values ('%s','%s');", lltoString(blackId).c_str(),reason.c_str()); //可以想办法实现手动在控制台手动输入指令
 		}
 		else
 		{
-			sprintf(query, "insert into blackQQ(QQId) values ('%s');", lltoString(blackId).c_str()); //可以想办法实现手动在控制台手动输入指令
+			sprintf(query, "insert into blackQQ(QQId,reason) values ('%s','%s');", lltoString(blackId).c_str(),reason.c_str()); //可以想办法实现手动在控制台手动输入指令
 		}
 		if (mysql_query(con, query)) //执行SQL语句
 		{

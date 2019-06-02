@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  *  _______     ________    ________    ________    __
  * |   __  \   |__    __|  |   _____|  |   _____|  |  |
  * |  |  |  |     |  |     |  |        |  |_____   |  |
@@ -7,7 +7,7 @@
  * |_______/   |________|  |________|  |________|  |__|
  *
  * Dice! QQ Dice Robot for TRPG
- * Copyright (C) 2018-2019 w4123ËÝä§
+ * Copyright (C) 2018-2019 w4123ï¿½ï¿½ï¿½
  *
  * This program is free software: you can redistribute it and/or modify it under the terms
  * of the GNU Affero General Public License as published by the Free Software Foundation,
@@ -23,12 +23,17 @@
 #include "RandomGenerator.h"
 #include <random>
 
+#ifdef _MSC_VER
+#include <intrin.h>
+#else
+#include <x86intrin.h>
+#endif
+
 namespace RandomGenerator
 {
 	inline unsigned long long GetCycleCount()
 	{
-		__asm _emit 0x0F
-		__asm _emit 0x31
+		return __rdtsc();
 	}
 
 	int Randint(int lowest, int highest)
@@ -36,6 +41,13 @@ namespace RandomGenerator
 		std::mt19937 gen(static_cast<unsigned int>(GetCycleCount()));
 		const std::uniform_int_distribution<int> dis(lowest, highest);
 		return dis(gen);
+	}
+
+	double RandDouble(double lowest, double highest)
+	{
+		std::mt19937 gen(static_cast<unsigned int>(GetCycleCount()));
+		const std::uniform_int_distribution<int> dis(lowest, highest);
+		return dis(gen)*0.01;
 	}
 }
 

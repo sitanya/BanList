@@ -1,71 +1,89 @@
 ﻿E:\VirsualStudio\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(com.langzaigg.BanList.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-  CQAPI.cpp
-  CQAPI_EX.cpp
-  CQEVE.cpp
-c:\users\sitan\documents\github\banlist\cqsdkcpp\cqeve.cpp(22): warning C4312: “reinterpret_cast”: 从“const int”转换到更大的“const void *”
-  CQstream.cpp
-  CQTools.cpp
-c:\users\sitan\documents\github\banlist\cqsdkcpp\cqtools.cpp(67): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  Unpack.cpp
-c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(56): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(66): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\cqsdkcpp\unpack.cpp(77): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
   BanList.cpp
-c:\users\sitan\documents\github\banlist\cqsdk\cqevebasic.h(5): error C2143: 语法错误: 缺少“;”(在“namespace”的前面)
-c:\users\sitan\documents\github\banlist\cqsdk\cqevebasic.h(5): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(82): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(96): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(83): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(97): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(87): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(101): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(99): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(113): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(102): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(116): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 参见“strcpy”的声明
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(104): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(118): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
-c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(109): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(123): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   e:\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 参见“strtok”的声明
-  DiceMsgSend.cpp
-  dllmain.cpp
-  GlobalVar.cpp
-  MysqlClient.cpp
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(48): warning C4101: “i”: 未引用的局部变量
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(67): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(70): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(96): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(99): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(122): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(125): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(146): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  e:\windows kits\10\include\10.0.17134.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
-  NameGenerator.cpp
-c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(40): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(41): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(47): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(48): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(54): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-c:\users\sitan\documents\github\banlist\banlist\namegenerator.cpp(55): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-  NameStorage.cpp
-  StorageBase.cpp
-  RandomGenerator.cpp
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(30): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(30): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(30): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C4235: 使用了非标准扩展: 不支持在此结构上使用“__asm”关键字
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C2146: 语法错误: 缺少“;”(在标识符“_emit”的前面)
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C2065: “_emit”: 未声明的标识符
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(31): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
-c:\users\sitan\documents\github\banlist\banlist\randomgenerator.cpp(32): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+  winmain.cpp
+c:\users\sitan\documents\github\banlist\banlist\winmain.cpp(35): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\sitan\documents\github\banlist\banlist\winmain.cpp(36): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
   正在生成代码...
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(138): warning C4715: “DeleteBlack”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(87): warning C4715: “QueryBlack”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(112): warning C4715: “InsertBlack”: 不是所有的控件路径都返回值
-c:\users\sitan\documents\github\banlist\banlist\mysqlclient.cpp(158): warning C4715: “ModifyData”: 不是所有的控件路径都返回值
+c:\users\sitan\documents\github\banlist\banlist\banlist.cpp(979): warning C4715: “__eventRequest_AddFriend”: 不是所有的控件路径都返回值
+CQAPI.obj : warning LNK4197: 多次指定导出“Initialize”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventEnable”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventPrivateMsg”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventGroupMsg”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventDiscussMsg”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventSystem_GroupMemberDecrease”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventSystem_GroupMemberIncrease”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventRequest_AddFriend”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventRequest_AddGroup”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventDisable”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventExit”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“__eventTestSwitch”；使用第一个规范
+BanList.obj : warning LNK4197: 多次指定导出“AppInfo”；使用第一个规范
+    正在创建库 C:\Users\sitan\Documents\GitHub\BanList\x64\Debug\app.lib 和对象 C:\Users\sitan\Documents\GitHub\BanList\x64\Debug\app.exp
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_sendPrivateMsg，该符号在函数 "int __cdecl CQ::sendPrivateMsg(__int64,char const *)" (?sendPrivateMsg@CQ@@YAH_JPEBD@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_sendGroupMsg，该符号在函数 "int __cdecl CQ::sendGroupMsg(__int64,char const *)" (?sendGroupMsg@CQ@@YAH_JPEBD@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_sendDiscussMsg，该符号在函数 "int __cdecl CQ::sendDiscussMsg(__int64,char const *)" (?sendDiscussMsg@CQ@@YAH_JPEBD@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_sendLikeV2，该符号在函数 "int __cdecl CQ::sendLike(__int64,int)" (?sendLike@CQ@@YAH_JH@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getCookies，该符号在函数 "char const * __cdecl CQ::getCookies(void)" (?getCookies@CQ@@YAPEBDXZ) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getRecord，该符号在函数 "char const * __cdecl CQ::getRecord(char const *,char const *)" (?getRecord@CQ@@YAPEBDPEBD0@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getCsrfToken，该符号在函数 "int __cdecl CQ::getCsrfToken(void)" (?getCsrfToken@CQ@@YAHXZ) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getAppDirectory，该符号在函数 "char const * __cdecl CQ::getAppDirectory(void)" (?getAppDirectory@CQ@@YAPEBDXZ) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getLoginQQ，该符号在函数 "__int64 __cdecl CQ::getLoginQQ(void)" (?getLoginQQ@CQ@@YA_JXZ) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getLoginNick，该符号在函数 "char const * __cdecl CQ::getLoginNick(void)" (?getLoginNick@CQ@@YAPEBDXZ) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupKick，该符号在函数 "int __cdecl CQ::setGroupKick(__int64,__int64,int)" (?setGroupKick@CQ@@YAH_J0H@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupBan，该符号在函数 "int __cdecl CQ::setGroupBan(__int64,__int64,__int64)" (?setGroupBan@CQ@@YAH_J00@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupAdmin，该符号在函数 "int __cdecl CQ::setGroupAdmin(__int64,__int64,int)" (?setGroupAdmin@CQ@@YAH_J0H@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupSpecialTitle，该符号在函数 "int __cdecl CQ::setGroupSpecialTitle(__int64,__int64,char const *,__int64)" (?setGroupSpecialTitle@CQ@@YAH_J0PEBD0@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupWholeBan，该符号在函数 "int __cdecl CQ::setGroupWholeBan(__int64,int)" (?setGroupWholeBan@CQ@@YAH_JH@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupAnonymousBan，该符号在函数 "int __cdecl CQ::setGroupAnonymousBan(__int64,char const *,__int64)" (?setGroupAnonymousBan@CQ@@YAH_JPEBD0@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupAnonymous，该符号在函数 "int __cdecl CQ::setGroupAnonymous(__int64,int)" (?setGroupAnonymous@CQ@@YAH_JH@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupCard，该符号在函数 "int __cdecl CQ::setGroupCard(__int64,__int64,char const *)" (?setGroupCard@CQ@@YAH_J0PEBD@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupLeave，该符号在函数 "int __cdecl CQ::setGroupLeave(__int64,int)" (?setGroupLeave@CQ@@YAH_JH@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setDiscussLeave，该符号在函数 "int __cdecl CQ::setDiscussLeave(__int64)" (?setDiscussLeave@CQ@@YAH_J@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setFriendAddRequest，该符号在函数 "int __cdecl CQ::setFriendAddRequest(char const *,int,char const *)" (?setFriendAddRequest@CQ@@YAHPEBDH0@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setGroupAddRequestV2，该符号在函数 "int __cdecl CQ::setGroupAddRequest(char const *,int,int,char const *)" (?setGroupAddRequest@CQ@@YAHPEBDHH0@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_addLog，该符号在函数 "int __cdecl CQ::addLog(int,char const *,char const *)" (?addLog@CQ@@YAHHPEBD0@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_setFatal，该符号在函数 "int __cdecl CQ::setFatal(char const *)" (?setFatal@CQ@@YAHPEBD@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getGroupMemberInfoV2，该符号在函数 "class CQ::GroupMemberInfo __cdecl CQ::getGroupMemberInfo(__int64,__int64,int)" (?getGroupMemberInfo@CQ@@YA?AVGroupMemberInfo@1@_J0H@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getStrangerInfo，该符号在函数 "class CQ::StrangerInfo __cdecl CQ::getStrangerInfo(__int64,int)" (?getStrangerInfo@CQ@@YA?AVStrangerInfo@1@_JH@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getGroupMemberList，该符号在函数 "class std::vector<class CQ::GroupMemberInfo,class std::allocator<class CQ::GroupMemberInfo> > __cdecl CQ::getGroupMemberList(__int64)" (?getGroupMemberList@CQ@@YA?AV?$vector@VGroupMemberInfo@CQ@@V?$allocator@VGroupMemberInfo@CQ@@@std@@@std@@_J@Z) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_getGroupList，该符号在函数 "class std::map<__int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<__int64>,class std::allocator<struct std::pair<__int64 const ,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > > __cdecl CQ::getGroupList(void)" (?getGroupList@CQ@@YA?AV?$map@_JV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@_J@2@V?$allocator@U?$pair@$$CB_JV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@2@@std@@XZ) 中被引用
+CQAPI_EX.obj : error LNK2019: 无法解析的外部符号 __imp_CQ_deleteMsg，该符号在函数 "int __cdecl CQ::deleteMsg(__int64)" (?deleteMsg@CQ@@YAH_J@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_num_rows，该符号在函数 "bool __cdecl InsertMsg(class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > >,__int64)" (?InsertMsg@@YA_NV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@_J@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_init，该符号在函数 "bool __cdecl DeleteBlack(__int64,bool)" (?DeleteBlack@@YA_N_J_N@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_real_connect，该符号在函数 "bool __cdecl DeleteBlack(__int64,bool)" (?DeleteBlack@@YA_N_J_N@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_query，该符号在函数 "bool __cdecl DeleteBlack(__int64,bool)" (?DeleteBlack@@YA_N_J_N@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_store_result，该符号在函数 "bool __cdecl InsertMsg(class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > >,__int64)" (?InsertMsg@@YA_NV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@_J@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_free_result，该符号在函数 "bool __cdecl InsertMsg(class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > >,__int64)" (?InsertMsg@@YA_NV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@_J@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_fetch_row，该符号在函数 "class std::set<__int64,struct std::less<__int64>,class std::allocator<__int64> > __cdecl QueryBlack(bool)" (?QueryBlack@@YA?AV?$set@_JU?$less@_J@std@@V?$allocator@_J@2@@std@@_N@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_fetch_field，该符号在函数 "class std::set<__int64,struct std::less<__int64>,class std::allocator<__int64> > __cdecl QueryBlack(bool)" (?QueryBlack@@YA?AV?$set@_JU?$less@_J@std@@V?$allocator@_J@2@@std@@_N@Z) 中被引用
+MysqlClient.obj : error LNK2019: 无法解析的外部符号 mysql_close，该符号在函数 "bool __cdecl DeleteBlack(__int64,bool)" (?DeleteBlack@@YA_N_J_N@Z) 中被引用
+app.exp : error LNK2001: 无法解析的外部符号 _AppInfo@0
+app.exp : error LNK2001: 无法解析的外部符号 _Initialize@4
+app.exp : error LNK2001: 无法解析的外部符号 ___eventDisable@0
+app.exp : error LNK2001: 无法解析的外部符号 ___eventDiscussMsg@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventEnable@0
+app.exp : error LNK2001: 无法解析的外部符号 ___eventExit@0
+app.exp : error LNK2001: 无法解析的外部符号 ___eventGroupMsg@36
+app.exp : error LNK2001: 无法解析的外部符号 ___eventPrivateMsg@24
+app.exp : error LNK2001: 无法解析的外部符号 ___eventRequest_AddFriend@24
+app.exp : error LNK2001: 无法解析的外部符号 ___eventRequest_AddGroup@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventSystem_GroupMemberDecrease@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventSystem_GroupMemberIncrease@32
+app.exp : error LNK2001: 无法解析的外部符号 ___eventTestSwitch@0
+F:\mysql-5.7.19-win32\lib\libmysql.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+CQP.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+C:\Users\sitan\Documents\GitHub\BanList\x64\Debug\app.dll : fatal error LNK1120: 51 个无法解析的外部命令

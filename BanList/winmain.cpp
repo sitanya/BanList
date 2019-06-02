@@ -126,21 +126,6 @@ LRESULT CALLBACK WindowProc(
 	static HWND refuseBanUser;
 	static HWND agreeUser;
 
-	static HWND LeaveBanGroup;
-	static HWND refuseGroup;
-	static HWND BanDetachOperator;
-	static HWND deleteDetachOperator;
-	static HWND agreeGroup;
-	static HWND LeaveForbiddenGroup;
-	static HWND BanForbiddenGroup;
-	static HWND DontRunningInBanGroup;
-	static HWND BanDetachGroup;
-
-	static HWND LeaveGroupByUser;
-	static HWND DontRunningInBanGroupForUser;
-	static HWND refuseBanUser;
-	static HWND agreeUser;
-
 	switch (uMsg)
 	{
 	case WM_CREATE:
@@ -445,6 +430,7 @@ LRESULT CALLBACK WindowProc(
 	{
 		map<string, bool> Switch_tmp;
 		char Msg[500] = "";
+		map<string, bool> Switch;
 		switch (LOWORD(wParam))
 		{
 		case ID_EDIT_QQ_MSG:
@@ -472,7 +458,6 @@ LRESULT CALLBACK WindowProc(
 			setGroupBanMSG(Msg);
 			break;
 		case ID_BUTTON_SAVE:
-			map<string, bool> Switch;
 			TCHAR ManagerQQ[20];
 			GetWindowText(hEditQQText, ManagerQQ, 20);
 			setMaster(_wtoi(ManagerQQ));

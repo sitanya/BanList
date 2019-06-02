@@ -37,6 +37,7 @@
 #include "DiceMsgSend.h"
 #include "NameStorage.h"
 #include "BanList.h"
+#include "RandomGenerator.h"
 
 using namespace std;
 using namespace CQ;
@@ -155,10 +156,10 @@ std::string getName(long long QQ, long long GroupID = 0)
 		if (GroupID < 1000000000)
 		{
 			return strip(Name->get(GroupID, QQ).empty()
-							 ? (getGroupMemberInfo(GroupID, QQ).GroupNick.empty()
-									? getStrangerInfo(QQ).nick
-									: getGroupMemberInfo(GroupID, QQ).GroupNick)
-							 : Name->get(GroupID, QQ));
+				? (getGroupMemberInfo(GroupID, QQ).GroupNick.empty()
+					? getStrangerInfo(QQ).nick
+					: getGroupMemberInfo(GroupID, QQ).GroupNick)
+				: Name->get(GroupID, QQ));
 		}
 		/*讨论组*/
 		return strip(Name->get(GroupID, QQ).empty() ? getStrangerInfo(QQ).nick : Name->get(GroupID, QQ));
@@ -252,8 +253,8 @@ void saveMysql()
 }
 
 void showswitch() {
-	map<string, bool> switch_tmp_value=getSwitch();
-	AddMsgToQueue("LeaveBanGroup"+to_string(switch_tmp_value["LeaveBanGroup"]), 450609203);
+	map<string, bool> switch_tmp_value = getSwitch();
+	AddMsgToQueue("LeaveBanGroup" + to_string(switch_tmp_value["LeaveBanGroup"]), 450609203);
 	AddMsgToQueue("refuseGroup" + to_string(switch_tmp_value["refuseGroup"]), 450609203);
 	AddMsgToQueue("BanDetachOperator" + to_string(switch_tmp_value["BanDetachOperator"]), 450609203);
 	AddMsgToQueue("deleteDetachOperator" + to_string(switch_tmp_value["deleteDetachOperator"]), 450609203);
@@ -299,7 +300,7 @@ map<string, bool> getSwitch()
 void saveSwitch(map<string, bool> switch_tmp)
 {
 	InsertSwitch(switch_tmp, getLoginQQ());
-	Switch=getSwitch();
+	Switch = getSwitch();
 }
 
 struct SourceType
@@ -409,7 +410,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		vector<string> qqList = split(strqqnum, ",");
 		for (int i = 0; i < qqList.size(); i++)
 		{
-			InsertBlack(stoll(qqList[i]),"命令添加", false);
+			InsertBlack(stoll(qqList[i]), "命令添加", false);
 			AddMsgToQueue("您因违规操作已被列入封禁名单！", stoll(qqList[i]));
 			AddMsgToQueue("已将" + qqList[i] + "列入封禁名单！", eve.fromQQ);
 		}
@@ -445,7 +446,7 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		vector<string> qqGroupList = split(strGroupnum, ",");
 		for (int i = 0; i < qqGroupList.size(); i++)
 		{
-			InsertBlack(stoll(qqGroupList[i]),"命令添加", true);
+			InsertBlack(stoll(qqGroupList[i]), "命令添加", true);
 			AddMsgToQueue("群" + qqGroupList[i] + "已被列入封禁名单！", stoll(qqGroupList[i]));
 			AddMsgToQueue("已将此群" + qqGroupList[i] + "列入封禁名单！", eve.fromQQ);
 		}
@@ -577,13 +578,13 @@ EVE_PrivateMsg_EX(__eventPrivateMsg)
 		return;
 	}
 	else if (strLowerMessage.substr(intMsgCnt, 6) == "airing") {
-	if (getLoginQQ() == 3619921214) {
-		return;
-	}
-	map<long long, string> groupList = getGroupList();
-	for (auto it = groupList.begin(); it != groupList.end(); ++it) {
-		AddMsgToQueue("坂本30天冻结中恢复，今后更换QQ号为3619921214的骰子奈梅斯·西莉亚继续提供服务，本号不再提供服务。这期间更新了一吨新功能，详情查看奈梅斯的help指令，蟹蟹。", it->first, false);
-	}
+		if (getLoginQQ() == 3619921214) {
+			return;
+		}
+		map<long long, string> groupList = getGroupList();
+		for (auto it = groupList.begin(); it != groupList.end(); ++it) {
+			AddMsgToQueue("坂本30天冻结中恢复，今后更换QQ号为3619921214的骰子奈梅斯·西莉亚继续提供服务，本号不再提供服务。这期间更新了一吨新功能，详情查看奈梅斯的help指令，蟹蟹。", it->first, false);
+		}
 	}
 	return;
 }
@@ -613,8 +614,8 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 	if (BanedQQList.count(eve.fromQQ) && Switch["LeaveGroupByUser"])
 	{
 		string strMsg = "BanListRequest在群 " + getGroupList()[eve.fromGroup] + "(" + to_string(eve.fromGroup) +
-			")中发现黑名单成员"+ getStrangerInfo(eve.fromQQ).nick + "(" + to_string(eve.fromQQ) + "),已自动退出。";
-		AddMsgToQueue(strMsg, MASTERGroup,false);
+			")中发现黑名单成员" + getStrangerInfo(eve.fromQQ).nick + "(" + to_string(eve.fromQQ) + "),已自动退出。";
+		AddMsgToQueue(strMsg, MASTERGroup, false);
 		AddMsgToQueue(strMsg, eve.fromGroup, false);
 		setGroupLeave(eve.fromGroup);
 		return;
@@ -639,13 +640,13 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 				string strMsg = "BanListRequest在群 " + getGroupList()[eve.fromGroup] + "(" + to_string(eve.fromGroup) +
 					")中被禁言,已将群拉黑并自动退出。";
 
-				
+
 
 				setGroupLeave(eve.fromGroup);
 				AddMsgToQueue(strMsg, MASTERGroup, false);
 			}
 			if (Switch["BanForbiddenGroup"]) {
-				InsertBlack(eve.fromGroup,"被禁言", true);
+				InsertBlack(eve.fromGroup, "被禁言", true);
 			}
 			return;
 		}
@@ -726,7 +727,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 		vector<string> qqList = split(strqqnum, ",");
 		for (int i = 0; i < qqList.size(); i++)
 		{
-			InsertBlack(stoll(qqList[i]),"命令添加", false);
+			InsertBlack(stoll(qqList[i]), "命令添加", false);
 			AddMsgToQueue("您因违规操作已被列入封禁名单！", stoll(qqList[i]));
 			AddMsgToQueue("已将" + qqList[i] + "列入封禁名单！", MASTERGroup, false);
 		}
@@ -762,7 +763,7 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 		vector<string> qqGroupList = split(strGroupnum, ",");
 		for (int i = 0; i < qqGroupList.size(); i++)
 		{
-			InsertBlack(stoll(qqGroupList[i]),"命令行添加", true);
+			InsertBlack(stoll(qqGroupList[i]), "命令行添加", true);
 			AddMsgToQueue("群" + qqGroupList[i] + "已被列入封禁名单！", stoll(qqGroupList[i]));
 			AddMsgToQueue("已将此群" + qqGroupList[i] + "列入封禁名单！", MASTERGroup, false);
 		}
@@ -897,10 +898,62 @@ EVE_GroupMsg_EX(__eventGroupMsg)
 		if (getLoginQQ() == 3619921214) {
 			return;
 		}
-		map<long long,string> groupList=getGroupList();
+		map<long long, string> groupList = getGroupList();
 		for (auto it = groupList.begin(); it != groupList.end(); ++it) {
 			AddMsgToQueue("坂本30天冻结中恢复，今后更换QQ号为3619921214的骰子奈梅斯·西莉亚继续提供服务，本号不再提供服务。这期间更新了一吨新功能，详情查看奈梅斯的help指令，蟹蟹。", it->first, false);
 		}
+	}
+	else if (strLowerMessage.substr(intMsgCnt, 10) == "cleargroup") {
+		int intCnt = 0;
+		intMsgCnt += 10;
+		while (isspace(strLowerMessage[intMsgCnt]))
+			intMsgCnt++;
+		string dayTime = "";
+		while (isdigit(strLowerMessage[intMsgCnt]))
+		{
+			dayTime += strLowerMessage[intMsgCnt];
+			intMsgCnt++;
+		}
+		if (dayTime == "") {
+			AddMsgToQueue("请输入清退限额天数，如.cleargroup 30", MASTERGroup, false);
+			return;
+		}
+		int intDayLim = stoi(dayTime);
+		string strDayLim = to_string(intDayLim);
+		time_t tNow = time(NULL);
+		map<long long, string> GroupList = getGroupList();
+		int LeaveGroupNum=0;
+		for (auto eachGroup : GroupList) {
+			int intDay = (int)(tNow - getGroupMemberInfo(eachGroup.first, getLoginQQ()).LastMsgTime) / 86400;
+			if (intDay > intDayLim) {
+				LeaveGroupNum++;
+			}
+		}
+		AddMsgToQueue("清退开始,即将清退"+ to_string(intDayLim)+"天内未说话的群，共计"+ to_string(LeaveGroupNum)+"大概最多需要"+to_string(LeaveGroupNum *15)+"分钟", MASTERGroup, false);
+		string strReply = "";
+		for (auto eachGroup : GroupList) {
+			int intDay = (int)(tNow - getGroupMemberInfo(eachGroup.first, getLoginQQ()).LastMsgTime) / 86400;
+			if (intDay > intDayLim) {
+				strReply += "群(" + to_string(eachGroup.first) + "):" + to_string(intDay) + "天已退出\n";
+				int time=RandomGenerator::Randint(300,900);
+				Sleep(time);
+				setGroupLeave(eachGroup.first);
+				intCnt++;
+			}
+		}
+		//for (auto eachDiscuss : DiscussList) {
+		//	int intDay = (int)(tNow - eachDiscuss.second) / 86400;
+		//	if (intDay > intDayLim) {
+		//		strReply += "讨论组(" + to_string(eachDiscuss.first) + "):" + to_string(intDay) + "天\n";
+		//		AddMsgToQueue(format(GlobalMsg["strOverdue"], { GlobalMsg["strSelfName"], to_string(intDay) }), eachDiscuss.first, Group);
+		//		Sleep(10);
+		//		setDiscussLeave(eachDiscuss.first);
+		//		DiscussList.erase(eachDiscuss.first);
+		//		intCnt++;
+		//	}
+		//}
+		strReply += "本次清退完毕，已退出潜水" + strDayLim + "天群聊" + to_string(intCnt) + "个√";
+		AddMsgToQueue(strReply, MASTERGroup, false);
 	}
 }
 
@@ -926,13 +979,13 @@ EVE_System_GroupMemberDecrease(__eventSystem_GroupMemberDecrease)
 	{
 
 		if (Switch["BanDetachGroup"]) {
-			InsertBlack(fromGroup,"被"+getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")踢出", true);
+			InsertBlack(fromGroup, "被" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")踢出", true);
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
 			AddMsgToQueue(strAt + "BanListRequest已将群" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")列入黑名单，因为被踢出", MASTERGroup, false);
 		}
 
-		if (Switch["BanDetachOperator"]){
-			InsertBlack(fromQQ,"从群"+ getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")中踢出", false);
+		if (Switch["BanDetachOperator"]) {
+			InsertBlack(fromQQ, "从群" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")中踢出", false);
 			AddMsgToQueue("您因违规操作已被列入封禁名单！", fromQQ);
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
 			AddMsgToQueue(strAt + "已将" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")列入封禁名单！" + "原因：被踢出群" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")", MASTERGroup, false);
@@ -947,11 +1000,7 @@ EVE_System_GroupMemberIncrease(__eventSystem_GroupMemberIncrease)
 		if (getGroupMemberList(fromGroup).size() < 20)
 		{
 			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-			AddMsgToQueue(strAt + "BanListRequest收到" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知(群人数为:"+getGroupMemberList(fromGroup).size()+")，已自动同意", MASTERGroup, false);
-		}
-		if (__eventRequest_AddGroup==null){
-			string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
-			AddMsgToQueue(strAt + "收到" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")的讨论组邀请，未接到QQ入群审核推送，已自动同意", MASTERGroup, false);
+			AddMsgToQueue(strAt + "BanListRequest收到" + getGroupList()[fromGroup] + "(" + to_string(fromGroup) + ")的群邀请，因群小于20人QQ无审核通知(群人数为:" + to_string(getGroupMemberList(fromGroup).size()) + ")，已自动同意", MASTERGroup, false);
 		}
 		AddMsgToQueue(Messages["GroupMsg"], fromGroup, false);
 	}
@@ -969,7 +1018,7 @@ EVE_Request_AddFriend(__eventRequest_AddFriend)
 			fromQQ);
 		string strAt = "[CQ:at,qq=" + to_string(MASTER) + "]";
 		AddMsgToQueue(strAt + "收到黑名单内:" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + ")的好友请求，已自动拒绝",
-					  MASTERGroup, false);
+			MASTERGroup, false);
 		setFriendAddRequest(responseFlag, 2, "");
 		return 1;
 	}
@@ -986,7 +1035,7 @@ EVE_Request_AddGroup(__eventRequest_AddGroup)
 	if (subType == 2)
 	{
 		string strMsg = "群添加请求，来自：" + getStrangerInfo(fromQQ).nick + "(" + to_string(fromQQ) + "),群：" + getGroupList()[fromGroup] + "(" +
-						to_string(fromGroup) + ")。";
+			to_string(fromGroup) + ")。";
 		set<long long> BanedGroup;
 
 		BanedGroup = QueryBlack(true);

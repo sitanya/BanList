@@ -84,7 +84,7 @@ set<long long> QueryBlack(bool group)
 {
 	set<long long> l1;
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		char *str = new char[20];
 		if (group)
@@ -113,20 +113,21 @@ set<long long> QueryBlack(bool group)
 }
 
 //插入数据
-bool InsertBlack(long long blackId,string reason bool group)
+bool InsertBlack(long long blackId, string reason, bool group)
 {
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
 		if (group)
 		{
-			sprintf(query, "insert into blackList(groupId,reason) values ('%s','%s');", lltoString(blackId).c_str(),reason.c_str()); //可以想办法实现手动在控制台手动输入指令
+			sprintf(query, "insert into blackList(groupId,reason) values ('%s','%s');", lltoString(blackId).c_str(), reason.c_str()); //可以想办法实现手动在控制台手动输入指令
 		}
 		else
 		{
-			sprintf(query, "insert into blackQQ(QQId,reason) values ('%s','%s');", lltoString(blackId).c_str(),reason.c_str()); //可以想办法实现手动在控制台手动输入指令
+			sprintf(query, "insert into blackQQ(QQId,reason) values ('%s','%s');", lltoString(blackId).c_str(), reason.c_str()); //可以想办法实现手动在控制台手动输入指令
 		}
+		mysql_query(con, "set names gbk"); //设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
 		if (mysql_query(con, query)) //执行SQL语句
 		{
 			mysql_close(con);
@@ -144,7 +145,7 @@ bool InsertBlack(long long blackId,string reason bool group)
 bool DeleteBlack(long long blackId, bool group)
 {
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
 		if (group)
@@ -172,7 +173,7 @@ bool DeleteBlack(long long blackId, bool group)
 bool ModifyData()
 {
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
 		sprintf(query, "update user set email='lilei325@163.com' where name='Lilei'");
@@ -192,7 +193,7 @@ bool ModifyData()
 map<string, string> QueryMsg(long long loginQQ)
 {
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
 		map<string, string> Messages;
@@ -228,12 +229,12 @@ map<string, bool> QuerySwitch(long long loginQQ)
 {
 	map<string, bool> Switch_tmp_query;
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
-	
+
 		char *str = new char[20];
-		sprintf_s(query, "select LeaveBanGroup,refuseGroup,BanDetachOperator,deleteDetachOperator,agreeGroup,LeaveForbiddenGroup,BanForbiddenGroup,DontRunningInBanGroup,BanDetachGroup,LeaveGroupByUser,DontRunningInBanGroupForUser,refuseBanUser,agreeUser from Switch where QQ='%s';", to_string(loginQQ).c_str()); 
+		sprintf_s(query, "select LeaveBanGroup,refuseGroup,BanDetachOperator,deleteDetachOperator,agreeGroup,LeaveForbiddenGroup,BanForbiddenGroup,DontRunningInBanGroup,BanDetachGroup,LeaveGroupByUser,DontRunningInBanGroupForUser,refuseBanUser,agreeUser from Switch where QQ='%s';", to_string(loginQQ).c_str());
 		mysql_query(con, "set names gbk");																										//设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
 		//返回0 查询成功，返回1查询失败
 		mysql_query(con, query);
@@ -242,20 +243,20 @@ map<string, bool> QuerySwitch(long long loginQQ)
 
 		column = mysql_fetch_row(res);
 
-			Switch_tmp_query["LeaveBanGroup"] = atoi(column[0]);
-			Switch_tmp_query["refuseGroup"] = atoi(column[1]);
-			Switch_tmp_query["BanDetachOperator"] = atoi(column[2]);
-			Switch_tmp_query["deleteDetachOperator"] = atoi(column[3]);
-			Switch_tmp_query["agreeGroup"] = atoi(column[4]);
-			Switch_tmp_query["LeaveForbiddenGroup"] = atoi(column[5]);
-			Switch_tmp_query["BanForbiddenGroup"] = atoi(column[6]);
-			Switch_tmp_query["DontRunningInBanGroup"] = atoi(column[7]);
-			Switch_tmp_query["BanDetachGroup"] = atoi(column[8]);
+		Switch_tmp_query["LeaveBanGroup"] = atoi(column[0]);
+		Switch_tmp_query["refuseGroup"] = atoi(column[1]);
+		Switch_tmp_query["BanDetachOperator"] = atoi(column[2]);
+		Switch_tmp_query["deleteDetachOperator"] = atoi(column[3]);
+		Switch_tmp_query["agreeGroup"] = atoi(column[4]);
+		Switch_tmp_query["LeaveForbiddenGroup"] = atoi(column[5]);
+		Switch_tmp_query["BanForbiddenGroup"] = atoi(column[6]);
+		Switch_tmp_query["DontRunningInBanGroup"] = atoi(column[7]);
+		Switch_tmp_query["BanDetachGroup"] = atoi(column[8]);
 
-			Switch_tmp_query["LeaveGroupByUser"] = atoi(column[9]);
-			Switch_tmp_query["DontRunningInBanGroupForUser"] = atoi(column[10]);
-			Switch_tmp_query["refuseBanUser"] = atoi(column[11]);
-			Switch_tmp_query["agreeUser"] = atoi(column[12]);
+		Switch_tmp_query["LeaveGroupByUser"] = atoi(column[9]);
+		Switch_tmp_query["DontRunningInBanGroupForUser"] = atoi(column[10]);
+		Switch_tmp_query["refuseBanUser"] = atoi(column[11]);
+		Switch_tmp_query["agreeUser"] = atoi(column[12]);
 
 
 		mysql_free_result(res);
@@ -268,10 +269,12 @@ map<string, bool> QuerySwitch(long long loginQQ)
 //插入数据
 bool InsertMsg(map<string, string> Messages, long long loginQQ)
 {
+	
 	MYSQL *con = mysql_init((MYSQL *)0);
 	MYSQL_RES *rer;
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
+		
 		con->reconnect = 1;
 		mysql_query(con, "set names gbk"); //设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
 
@@ -281,6 +284,7 @@ bool InsertMsg(map<string, string> Messages, long long loginQQ)
 
 		rer = mysql_store_result(con);
 
+		
 		if (mysql_num_rows(rer) == 0)
 		{
 
@@ -319,7 +323,7 @@ bool InsertSwitch(map<string, bool> Switch_tmp, long long loginQQ)
 {
 	int resultNum = 0;
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		map<string, bool> Switch;
 		con->reconnect = 1;
@@ -336,40 +340,40 @@ bool InsertSwitch(map<string, bool> Switch_tmp, long long loginQQ)
 		if (resultNum == 0)
 		{
 			sprintf_s(query, "insert into Switch(QQ,LeaveBanGroup,refuseGroup,BanDetachOperator,deleteDetachOperator,agreeGroup,LeaveForbiddenGroup,BanForbiddenGroup,DontRunningInBanGroup,BanDetachGroup,LeaveGroupByUser,DontRunningInBanGroupForUser,refuseBanUser,agreeUser) values ('%s','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d');",
-					to_string(loginQQ).c_str(),
-					Switch_tmp["LeaveBanGroup"],
-					Switch_tmp["refuseGroup"],
-					Switch_tmp["BanDetachOperator"],
-					Switch_tmp["deleteDetachOperator"],
-					Switch_tmp["agreeGroup"],
-					Switch_tmp["LeaveForbiddenGroup"],
-					Switch_tmp["BanForbiddenGroup"],
-					Switch_tmp["DontRunningInBanGroup"],
-					Switch_tmp["BanDetachGroup"],
-					Switch_tmp["LeaveGroupByUser"],
-					Switch_tmp["DontRunningInBanGroupForUser"],
-					Switch_tmp["refuseBanUser"],
-					Switch_tmp["agreeUser"]);
-				mysql_query(con, query);
+				to_string(loginQQ).c_str(),
+				Switch_tmp["LeaveBanGroup"],
+				Switch_tmp["refuseGroup"],
+				Switch_tmp["BanDetachOperator"],
+				Switch_tmp["deleteDetachOperator"],
+				Switch_tmp["agreeGroup"],
+				Switch_tmp["LeaveForbiddenGroup"],
+				Switch_tmp["BanForbiddenGroup"],
+				Switch_tmp["DontRunningInBanGroup"],
+				Switch_tmp["BanDetachGroup"],
+				Switch_tmp["LeaveGroupByUser"],
+				Switch_tmp["DontRunningInBanGroupForUser"],
+				Switch_tmp["refuseBanUser"],
+				Switch_tmp["agreeUser"]);
+			mysql_query(con, query);
 
 		}
 		else {
 
-				sprintf_s(query, "update Switch set LeaveBanGroup= '%d',refuseGroup= '%d',BanDetachOperator= '%d',deleteDetachOperator= '%d',agreeGroup= '%d',LeaveForbiddenGroup= '%d',BanForbiddenGroup= '%d',DontRunningInBanGroup= '%d',BanDetachGroup= '%d',LeaveGroupByUser= '%d',DontRunningInBanGroupForUser= '%d',refuseBanUser= '%d',agreeUser= '%d' where QQ='%s';",
-					Switch_tmp["LeaveBanGroup"],
-					Switch_tmp["refuseGroup"],
-					Switch_tmp["BanDetachOperator"],
-					Switch_tmp["deleteDetachOperator"],
-					Switch_tmp["agreeGroup"],
-					Switch_tmp["LeaveForbiddenGroup"],
-					Switch_tmp["BanForbiddenGroup"],
-					Switch_tmp["DontRunningInBanGroup"],
-					Switch_tmp["BanDetachGroup"],
-					Switch_tmp["LeaveGroupByUser"],
-					Switch_tmp["DontRunningInBanGroupForUser"],
-					Switch_tmp["refuseBanUser"],
-					Switch_tmp["agreeUser"],
-					to_string(loginQQ).c_str());
+			sprintf_s(query, "update Switch set LeaveBanGroup= '%d',refuseGroup= '%d',BanDetachOperator= '%d',deleteDetachOperator= '%d',agreeGroup= '%d',LeaveForbiddenGroup= '%d',BanForbiddenGroup= '%d',DontRunningInBanGroup= '%d',BanDetachGroup= '%d',LeaveGroupByUser= '%d',DontRunningInBanGroupForUser= '%d',refuseBanUser= '%d',agreeUser= '%d' where QQ='%s';",
+				Switch_tmp["LeaveBanGroup"],
+				Switch_tmp["refuseGroup"],
+				Switch_tmp["BanDetachOperator"],
+				Switch_tmp["deleteDetachOperator"],
+				Switch_tmp["agreeGroup"],
+				Switch_tmp["LeaveForbiddenGroup"],
+				Switch_tmp["BanForbiddenGroup"],
+				Switch_tmp["DontRunningInBanGroup"],
+				Switch_tmp["BanDetachGroup"],
+				Switch_tmp["LeaveGroupByUser"],
+				Switch_tmp["DontRunningInBanGroupForUser"],
+				Switch_tmp["refuseBanUser"],
+				Switch_tmp["agreeUser"],
+				to_string(loginQQ).c_str());
 
 
 			mysql_query(con, query);
@@ -387,7 +391,7 @@ bool initMsg(long long loginQQ)
 {
 	int resultNum = 0;
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
 		mysql_query(con, "set names gbk"); //设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
@@ -443,7 +447,7 @@ bool initSwitch(long long loginQQ)
 {
 	int resultNum = 0;
 	MYSQL *con = mysql_init((MYSQL *)0);
-	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "root", "Dice", 3306, NULL, 0))
+	if (con != NULL && mysql_real_connect(con, "123.207.150.160", "root", "rong", "Dice", 3306, NULL, 0))
 	{
 		con->reconnect = 1;
 		mysql_query(con, "set names gbk"); //设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
@@ -473,7 +477,7 @@ bool initSwitch(long long loginQQ)
 			Switch_tmp["DontRunningInBanGroupForUser"] = false;
 			Switch_tmp["refuseBanUser"] = false;
 			Switch_tmp["agreeUser"] = false;
-			sprintf(query, "insert into Switch(QQ,LeaveBanGroup,refuseGroup,BanDetachOperator,deleteDetachOperator,agreeGroup,LeaveForbiddenGroup,BanForbiddenGroup,DontRunningInBanGroup,BanDetachGroup,LeaveGroupByUser,DontRunningInBanGroupForUser,refuseBanUser,agreeUser) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');",
+			sprintf(query, "insert into Switch(QQ,LeaveBanGroup,refuseGroup,BanDetachOperator,deleteDetachOperator,agreeGroup,LeaveForbiddenGroup,BanForbiddenGroup,DontRunningInBanGroup,BanDetachGroup,LeaveGroupByUser,DontRunningInBanGroupForUser,refuseBanUser,agreeUser) values ('%s','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d');",
 				to_string(loginQQ).c_str(),
 				Switch_tmp["LeaveBanGroup"],
 				Switch_tmp["refuseGroup"],
@@ -488,13 +492,18 @@ bool initSwitch(long long loginQQ)
 				Switch_tmp["DontRunningInBanGroupForUser"],
 				Switch_tmp["refuseBanUser"],
 				Switch_tmp["agreeUser"]); //可以想办法实现手动在控制台手动输入指令
+			string queryString = "";
+			queryString = query;
+			AddMsgToQueue("insert" + queryString, 450609203);
 			if (mysql_query(con, query))			  //执行SQL语句
 			{
+				AddMsgToQueue("insert suc" + queryString, 450609203);
 				mysql_close(con);
 				return false;
 			}
 			else
 			{
+				AddMsgToQueue("insert err"+ queryString, 450609203);
 				mysql_free_result(res);
 				mysql_close(con);
 				return true;
